@@ -1,0 +1,8 @@
+*.o
+*.exe
+*.tar
+*.zip
+/html
+/latex
+/.vscode
+
