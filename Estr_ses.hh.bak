@@ -1,0 +1,36 @@
+#include "BinTree.hh"
+class Estr_ses {
+
+private:
+    
+    BinTree<string> arbol;
+    static void esc(const BinTree<string>& a);
+    static void read(const BinTree<string>& a);
+    
+public:
+    bool vacia() const
+    {
+        return arbol.empty();
+    }
+    string primer() const
+    {
+        return arbol.value();
+    }
+    string izq() const
+    {
+        return arbol.left();
+    }
+    string der() const
+    {
+        return arbol.right();
+    }
+    int leer()
+    {
+        
+    }
+    void escribir()
+    {
+        
+    }
+
+    };

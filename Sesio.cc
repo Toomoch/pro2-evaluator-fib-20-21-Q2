@@ -62,7 +62,7 @@ bool Sesio::buscar(const BinTree<string> &t, string p)
     }
     return found;                                                              
 }
-
+/*
 void wtf(BinTree<string> &y, string p)
 {
     if (y.value()==p)
@@ -70,7 +70,7 @@ void wtf(BinTree<string> &y, string p)
         if (y.value.em)
     }
 }
-
+*/
 void Sesio::escriu_ses()
 {
     preorde_escriure_ses(tree);

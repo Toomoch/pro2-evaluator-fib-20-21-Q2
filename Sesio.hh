@@ -6,6 +6,7 @@
 
 /// \cond
 #include <iostream>
+#include <set>
 #include "BinTree.hh"
 /// \endcond
 using namespace std;
@@ -16,6 +17,7 @@ using namespace std;
 class Sesio{
     private:
         BinTree<string> tree;
+        set <string> prob;
         int numprob;
     public:
     //Constructors

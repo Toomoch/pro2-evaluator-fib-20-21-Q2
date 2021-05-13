@@ -65,6 +65,11 @@ class Curs{
     */
     int num_acabaments();
 
+    /** @brief Serà true si el curs té un conflicte de interseccio de problemes
+    \pre Cert
+    \post Retorna si el curs té un conflicte de interseccio de problemes
+    */
+    bool interseccio();
     
 };
 

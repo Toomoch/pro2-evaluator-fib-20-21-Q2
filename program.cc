@@ -72,14 +72,13 @@ int main ()
             else cout<<"error: la sesion ya existe"<<endl;
             
         }
-        /*
+        
         else if (comando == "nuevo_curso" or comando == "nc")
         {
-            string cur;
-            cin>>cur;
-            c.afegir_curs_al_cjt(cur);
+            cout<<"#"<<comando;
+            c.afegir_curs_al_cjt();
         }
-        */
+        
         else if (comando == "alta_usuario" or comando == "a")
         {
 

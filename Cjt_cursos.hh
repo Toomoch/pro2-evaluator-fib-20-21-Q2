@@ -38,7 +38,7 @@ class Cjt_cursos{
     \pre Nou curs no existent al conjunt
     \post Afegeix el curs donat al conjunt de cursos
     */
-    void afegir_curs_al_cjt(string cur);
+    void afegir_curs_al_cjt();
 
     /** @brief Incrementa el nombre d'inscrits del curs donat en 1
     \pre Cert

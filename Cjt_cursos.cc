@@ -18,16 +18,19 @@ void Cjt_cursos::llegeix_cjt_cursos(int ncurs)
     }
     
 }
-/*
-void Cjt_cursos::afegir_curs_al_cjt(string cur)
+
+void Cjt_cursos::afegir_curs_al_cjt()
 {
+    
+    Curs c;
     int nses;
-    Curs curs;
     cin>>nses;
-    curs.llegir_curs(nses);
+    c.llegir_curs(nses);
+    if (c.interseccio()) cout<<"error: curso mal formado"<<endl;
+    else vec.push_back(c);
 
 }
-*/
+
 
 int Cjt_cursos::num_cjt_cursos()
 {
