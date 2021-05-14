@@ -19,15 +19,20 @@ void Cjt_cursos::llegeix_cjt_cursos(int ncurs)
     
 }
 
-void Cjt_cursos::afegir_curs_al_cjt()
+void Cjt_cursos::afegir_curs_al_cjt(Cjt_sesions &q)
 {
     
     Curs c;
     int nses;
     cin>>nses;
     c.llegir_curs(nses);
-    if (c.interseccio()) cout<<"error: curso mal formado"<<endl;
-    else vec.push_back(c);
+    if (c.interseccio(q)) cout<<"error: curso mal formado"<<endl;
+    else 
+    {
+        vec.push_back(c);
+        cout<<vec.size()<<endl;
+    }
+    
 
 }
 

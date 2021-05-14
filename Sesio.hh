@@ -6,9 +6,10 @@
 
 /// \cond
 #include <iostream>
-#include <set>
+
 #include "BinTree.hh"
 /// \endcond
+#include "Cjt_ids.hh"
 using namespace std;
 
 /** @class Sesio
@@ -17,7 +18,7 @@ using namespace std;
 class Sesio{
     private:
         BinTree<string> tree;
-        set <string> prob;
+        Cjt_ids setprob;
         int numprob;
     public:
     //Constructors
@@ -76,7 +77,19 @@ class Sesio{
     */
     void preordre_llegir_ses(BinTree <string> &temp);
 
-    
+    /** @brief Retorna el conjunt de problemes que conté la sessió
+    \pre Cert
+    \post Retorna el conjunt de problemes que conté la sessió
+    */
+    Cjt_ids problemes_sesio();
+    /*
+    string problemes_sesio_pos(const set<string>::iterator &it);
 
+    set<string>::iterator problemes_sesio_principi();
+    
+    set<string>::iterator problemes_sesio_final();
+
+    bool problemes_sesio_insertar(string id);
+    */
 };
 #endif

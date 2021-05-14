@@ -75,8 +75,8 @@ int main ()
         
         else if (comando == "nuevo_curso" or comando == "nc")
         {
-            cout<<"#"<<comando;
-            c.afegir_curs_al_cjt();
+            cout<<"#"<<comando<<endl;
+            c.afegir_curs_al_cjt(q);
         }
         
         else if (comando == "alta_usuario" or comando == "a")

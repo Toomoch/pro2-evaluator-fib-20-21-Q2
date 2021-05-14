@@ -70,3 +70,24 @@ bool Cjt_sesions::existeix_sesio(string u) {
     if (it == mapa.end()) return false;
     else return true;
 }
+
+Cjt_ids Cjt_sesions::problemes_cjt_sesio(string u)
+{
+    return mapa[u].problemes_sesio();
+}
+/*
+string Cjt_sesions::problemes_cjt_sesio_pos(const set<string>::iterator &it, string u)
+{
+    return mapa[u].problemes_sesio_pos(it);
+}
+
+set<string>::iterator Cjt_sesions::problemes_cjt_sesio_principi(string u)
+{
+    return mapa[u].problemes_sesio_principi();
+}
+    
+set<string>::iterator Cjt_sesions::problemes_cjt_sesio_final(string u)
+{
+    return mapa[u].problemes_sesio_final();
+}
+*/

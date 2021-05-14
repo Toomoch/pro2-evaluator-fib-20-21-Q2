@@ -8,7 +8,10 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <set>
 /// \endcond
+#include "Cjt_ids.hh"
+#include "Cjt_sesions.hh"
 using namespace std;
 
 /** @class Curs
@@ -69,7 +72,7 @@ class Curs{
     \pre Cert
     \post Retorna si el curs té un conflicte de interseccio de problemes
     */
-    bool interseccio();
+    bool interseccio(Cjt_sesions &q);
     
 };
 

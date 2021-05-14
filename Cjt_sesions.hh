@@ -11,6 +11,7 @@
 #include <list>
 /// \endcond
 #include "Sesio.hh"
+#include "Cjt_ids.hh"
 
 using namespace std;
 
@@ -71,5 +72,14 @@ class Cjt_sesions{
     \post Indica si la sesió està al conjunt
         */
     bool existeix_sesio(string u);
+
+    Cjt_ids problemes_cjt_sesio(string u);
+    /*
+    string problemes_cjt_sesio_pos(const set<string>::iterator &it, string u);
+
+    set<string>::iterator problemes_cjt_sesio_principi(string u);
+
+    set<string>::iterator problemes_cjt_sesio_final(string u);
+    */
 };
 #endif

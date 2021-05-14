@@ -16,14 +16,15 @@ void Sesio::preordre_llegir_ses(BinTree <string> &temp)
 {
     string problem;
     cin>>problem;
-     if (problem != "0")
-     {
-         BinTree <string> l;
-         preordre_llegir_ses(l);
-         BinTree <string> r;
-         preordre_llegir_ses(r);
-         temp = BinTree <string> (problem, l, r);
-     }
+    if (problem != "0")
+    {
+        setprob.insertar(problem);
+        BinTree <string> l;
+        preordre_llegir_ses(l);
+        BinTree <string> r;
+        preordre_llegir_ses(r);
+        temp = BinTree <string> (problem, l, r);
+    }
 }
 
 int Sesio::calc_numero_problemes(const BinTree <string> &temp){
@@ -95,3 +96,29 @@ int Sesio::num_problemes()
 {
     return numprob;
 }
+
+Cjt_ids Sesio::problemes_sesio()
+{
+    return setprob;
+}
+/*
+string Sesio::problemes_sesio_pos(const set<string>::iterator &it)
+{
+    return setprob.pos(it);
+}
+
+set<string>::iterator Sesio::problemes_sesio_principi()
+{
+    return setprob.principi();
+}
+    
+set<string>::iterator Sesio::problemes_sesio_final()
+{
+    return setprob.final();
+}
+
+bool Sesio::problemes_sesio_insertar(string id)
+{
+    setprob.insert
+}
+*/
