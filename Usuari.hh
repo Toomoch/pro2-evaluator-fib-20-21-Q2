@@ -45,23 +45,25 @@ class Usuari{
         */
         void modificar_curs(int nc);
 
-        /** @brief Inscriu l'usuari al curs amb els problemes inicials
+        /** @brief Inscriu l'usuari al curs c
         \pre Curs vàlid
-        \post Inscriu l'usuari al curs amb els problemes inicials
+        \post Inscriu l'usuari al curs c
         */
-        void inscriure_curs(const list <string> &p, int c);
+        void inscriure_curs(const int &c);
 
         /** @brief Treu el problema d'enviables 
         \pre Problema existent
         \post Treu el problema d'enviables
         */
-        void treure_enviable(string p);
+        void treure_enviable(const string &p);
 
         /** @brief Afegeix el problema p als intentats
         \pre p pertany al cjt de problemes
         \post Afegeix el problema p als intentats
         */
-        void afegir_intentats(string p);
+        void afegir_intentats(const string &p);
+
+        void afegir_enviables(const string &p);
 
         //Consultors
         /** @brief Comprova que l'usuari que hagi completat el curs

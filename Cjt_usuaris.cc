@@ -58,12 +58,6 @@ void Cjt_usuaris::eliminar_usuari(string u)
     
 }
 
-
-void Cjt_usuaris::inscriure_usuari_curs(string u, int c, const list <string> &arrel) 
-{
-    mapa[u].inscriure_curs(arrel, c);
-}
-
 int Cjt_usuaris::curs_inscrit(string u)
 {
     return mapa[u].curs_usuari();
@@ -100,6 +94,13 @@ void Cjt_usuaris::llistar_usuari(string u)
     
     cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].intent()<<","<<mapa[u].resolt()<<","<<mapa[u].curs_usuari()<<")"<<endl;
     
+}
+
+void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions &q, Cjt_cursos &C)
+{
+    map<std::string, Usuari>::iterator it = mapa.find(u);
+    C.inscriu_cjt_cursos(c, (*it).second, q);
+    mapa[u].inscriure_curs(c);
 }
 /*
 void Cjt_usuaris::enviament(string u, string p, int r) 

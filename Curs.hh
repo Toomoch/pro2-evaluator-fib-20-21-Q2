@@ -50,12 +50,6 @@ class Curs{
     void dec_inscrits();
 
     //Consultors
-    /** @brief Retorna la llista de sesions que conté el curs
-    \pre Cert
-    \post Retorna la llista de sesions que conté el curs
-    */
-    list <string> llista_ses();
-
     /** @brief Escriu el Curs i les seves característiques
     \pre Cert
     \post Escriu les característiques del curs: nombre d'usuaris que l'han completat, nombre d'inscrits, nombre de sesions i els identificadors d'aquestes
@@ -81,6 +75,8 @@ class Curs{
     bool interseccio(Cjt_sesions &q);
 
     string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
+
+    void inscriu_curs(Usuari &u, Cjt_sesions &q);
     
 };
 

@@ -24,26 +24,6 @@ void Cjt_sesions::afegir_sesio(string identif)
     cout<<mapa.size()<<endl;
 }
 
-list <string> Cjt_sesions::arrel_cjt(const list <string> &s)
-{
-    list <string>::const_iterator it;
-    list <string> l;
-    for (it = s.begin(); it != s.end(); ++it)
-    {
-        l.push_back(mapa[(*it)].arrel());
-    }
-    return l;
-    
-}
-
-string Cjt_sesions::ses_prob_find_cjt(const list <string> &l, string p)
-{
-    for (list <string>::const_iterator it = l.begin(); it != l.end(); ++it)
-    {
-        if (mapa[(*it)].ses_prob_find(p)) return (*it);
-    }
-    return "-";
-}
 
 void Cjt_sesions::escriure_cjt_sesio()
 {
@@ -89,4 +69,9 @@ bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
     if (mapa[s].problemes_sesio().existeix(p)) return true;
     
     return false;
+}
+
+void Cjt_sesions::inscriu_cjt_sesio(const string &s, Usuari &u)
+{
+    u.afegir_enviables(mapa[s].arrel());
 }

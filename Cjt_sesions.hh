@@ -55,18 +55,6 @@ class Cjt_sesions{
     */
     void escriure_sesio(string s);
 
-    /** @brief Retorna una llista dels problemes arrel de la llista de sesions donada
-    \pre Cert
-    \post Retorna una llista dels problemes arrel de la llista de sesions donada
-    */
-    list <string> arrel_cjt(const list <string> &s);
-
-    /** @brief Busca si el problema donat és a la llista de problemes donada
-    \pre Cert
-    \post Busca si el problema donat és a la llista de problemes donada
-    */
-    string ses_prob_find_cjt(const list <string> &l, string p);
-
     /** @brief Indica si la sesió està al conjunt
     \pre Cert
     \post Indica si la sesió està al conjunt
@@ -76,5 +64,7 @@ class Cjt_sesions{
     Cjt_ids problemes_cjt_sesio(string u);
 
     bool sesio_problema_existeix(const string &p, const string &s);
+
+    void inscriu_cjt_sesio(const string &s, Usuari &u);
 };
 #endif

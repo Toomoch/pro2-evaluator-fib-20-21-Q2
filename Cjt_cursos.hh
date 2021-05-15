@@ -66,7 +66,7 @@ class Cjt_cursos{
     \pre Cert
     \post Escriu el cursos donat
     */
-    void escriu_curs(int u);
+    void escriu_curs(const int &u);
 
     /** @brief Retorna el numero de cursos
     \pre Cert
@@ -79,12 +79,6 @@ class Cjt_cursos{
     \post Indica si el curs està dins del conjunt
     */
     bool existeix_curs(int c);
-
-    /** @brief Retorna la llista de sesions del curs que pertany al conjunt
-    \pre Curs existent
-    \post Retorna la llista de sesions del curs que pertany al conjunt
-    */
-    list <string> llista_ses_cjt(int c);
     
     /** @brief Retorna el nombre d'inscrits en el curs donat
     \pre Cert
@@ -93,6 +87,8 @@ class Cjt_cursos{
     int num_inscrits_cjt(int c);
 
     void cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
+
+    void inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q);
 
 };
 #endif

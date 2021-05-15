@@ -48,12 +48,6 @@ bool Cjt_cursos::existeix_curs(int c)
     else return false;
 }
 
-list <string> Cjt_cursos::llista_ses_cjt(int c)
-{
-    list <string> l = vec[c-1].llista_ses();
-    return l;
-}
-
 void Cjt_cursos::inc_inscrits_cjt(int c)
 {
     vec[c-1].inc_inscrits();
@@ -79,7 +73,7 @@ void Cjt_cursos::escriu_cjt_cursos()
     
 }
 
-void Cjt_cursos::escriu_curs(int c) 
+void Cjt_cursos::escriu_curs(const int &c) 
 {
     cout<<c<<" ";
     vec[c-1].escriure_curs();
@@ -100,5 +94,10 @@ void Cjt_cursos::cjt_cursos_sesio_problema_existeix(const int &c, const string &
         cout<<"error: el problema no pertenece al curso"<<endl;
     }
 
+}
+
+void Cjt_cursos::inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q)
+{
+    vec[c-1].inscriu_curs(u, q);
 }
 

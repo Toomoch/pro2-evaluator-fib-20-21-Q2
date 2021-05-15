@@ -10,6 +10,7 @@
 #include "BinTree.hh"
 /// \endcond
 #include "Cjt_ids.hh"
+#include "Usuari.hh"
 using namespace std;
 
 /** @class Sesio

@@ -10,7 +10,7 @@
 #include <list>
 /// \endcond
 #include "Usuari.hh"
-
+#include "Cjt_cursos.hh"
 using namespace std;
 
 /** @class Cjt_usuaris
@@ -46,11 +46,11 @@ class Cjt_usuaris{
         */
         void llegir_usuaris(int nu);
         
-        /** @brief Inscriu l'usuari amb id = u al curs c
-        \pre L'usuari ha acabat el curs o no té curs
-        \post Inscriu l'usuari amb id = u al curs c
+        /** @brief Inscriu l'usuari u al curs c
+        \pre Usuari existent
+        \post Inscriu l'usuari u al curs c
         */
-        void inscriure_usuari_curs(string u, int c, const list <string> &arrel);
+        void cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions &q, Cjt_cursos &C);
         
         /** @brief Realitza un enviament de problema de l'Usuari u
         \pre Cert
@@ -94,13 +94,6 @@ class Cjt_usuaris{
         \post Indica si l'usuari està al conjunt
         */
         bool existeix_usuari(string u);
-
-
-        
-
-        
-
-
 
 };
 #endif

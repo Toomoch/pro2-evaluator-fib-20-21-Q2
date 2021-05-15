@@ -55,7 +55,7 @@ int main ()
             cout<<" "<<prob<<endl;
             p.afegeix_Cjt_problemes(prob);
         }
-        
+
         else if (comando == "nueva_sesion" or comando == "ns")
         {
             
@@ -115,12 +115,8 @@ int main ()
             {
                 if (c.existeix_curs(cursusr))
                 {
-                    
                     if (u.curs_inscrit(usr) == 0) {
-                        list <string> sesions = c.llista_ses_cjt(cursusr);
-                        list <string> arrel = q.arrel_cjt(sesions);
-                        u.inscriure_usuari_curs(usr, cursusr, arrel);
-                        c.inc_inscrits_cjt(cursusr);
+                        u.cjt_inscriure_curs(cursusr, usr, q, c);
                         cout<<c.num_inscrits_cjt(cursusr)<<endl;
 
                     }

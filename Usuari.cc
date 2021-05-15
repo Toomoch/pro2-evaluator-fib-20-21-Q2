@@ -22,15 +22,9 @@ int Usuari::curs_usuari()
     return inscrit;
 }
 
-void Usuari::inscriure_curs(const list <string> &p, int c)
+void Usuari::inscriure_curs(const int &c)
 {
     inscrit = c;
-    for ( list <string>::const_iterator it = p.begin(); it != p.end(); ++it)
-    {
-        enviables.insert(make_pair((*it),0));
-    }
-    
-    
 }
 
 void Usuari::escriu_resolts()
@@ -66,7 +60,7 @@ int Usuari::intent()
     return intentats.size();
 }
 
-void Usuari::treure_enviable(string p)
+void Usuari::treure_enviable(const string &p)
 {
     map <string,int>::iterator it;
     it = enviables.find(p);
@@ -77,8 +71,13 @@ void Usuari::treure_enviable(string p)
     
 }
 
-void Usuari::afegir_intentats(string p)
+void Usuari::afegir_intentats(const string &p)
 {
     intentats.insert(p);
     ++env;
+}
+
+void Usuari::afegir_enviables(const string &p)
+{
+    enviables.insert(make_pair(p,0));
 }

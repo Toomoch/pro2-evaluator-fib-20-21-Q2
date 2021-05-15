@@ -16,10 +16,6 @@ void Curs::llegir_curs(int nses)
     
 }
 
-list <string> Curs::llista_ses() 
-{
-    return ses_del_curs;
-}
 
 void Curs::escriure_curs()
 {
@@ -92,4 +88,15 @@ string Curs::curs_sesio_problema_existeix(const string &p, Cjt_sesions &q)
         if (q.sesio_problema_existeix(p, (*it))) return (*it);
     }
     return "-";
+}
+
+
+void Curs::inscriu_curs(Usuari &u, Cjt_sesions &q)
+{
+    for (list<string>::iterator it = ses_del_curs.begin(); it != ses_del_curs.end(); ++it)
+    {
+        q.inscriu_cjt_sesio((*it), u);
+    }
+    ++inscrits;
+    
 }
