@@ -34,13 +34,13 @@ class Cjt_sesions{
     \pre La nova sesió no és existent dins del conjunt
     \post Afegeix una sesió al conjunt de sesions
     */
-    void afegir_sesio(string identif);
+    void afegir_sesio(const string &identif);
 
     /** @brief Llegir un conjunt de sesions
     \pre Nombre de sesions > 0
     \post Llegeix un conjunt de sesions
     */
-    void llegir_cjt_sesions(int nsesio);
+    void llegir_cjt_sesions(const int &nsesio);
 
     //Consultors
     /** @brief Escriure un conjunt de sesions
@@ -53,15 +53,15 @@ class Cjt_sesions{
     \pre Cert
     \post Retorna una sesió 
     */
-    void escriure_sesio(string s);
+    void escriure_sesio(const string &s);
 
     /** @brief Indica si la sesió està al conjunt
     \pre Cert
     \post Indica si la sesió està al conjunt
-        */
-    bool existeix_sesio(string u);
+    */
+    bool existeix_sesio(const string &u);
 
-    Cjt_ids problemes_cjt_sesio(string u);
+    Cjt_ids problemes_cjt_sesio(const string &u);
 
     bool sesio_problema_existeix(const string &p, const string &s);
 

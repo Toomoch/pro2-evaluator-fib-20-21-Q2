@@ -36,14 +36,14 @@ class Usuari{
         \pre nc >=0
         \post Crea un Usuari amb curs = nc 
         */
-        Usuari(int nc);
+        Usuari(const int &nc);
 
         //Modificadors     
         /** @brief Canvia el curs de l'usuari per nc
         \pre nc > 0 
         \post curs = nc
         */
-        void modificar_curs(int nc);
+        void modificar_curs(const int &nc);
 
         /** @brief Inscriu l'usuari al curs c
         \pre Curs vàlid

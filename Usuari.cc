@@ -6,7 +6,7 @@ Usuari::Usuari()
 }
 
 /*
-void Usuari::modificar_curs(int nc) {
+void Usuari::modificar_curs(const int &nc) {
     
 }
 

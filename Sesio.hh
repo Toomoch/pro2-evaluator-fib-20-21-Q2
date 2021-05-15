@@ -60,9 +60,9 @@ class Sesio{
     \pre Cert
     \post Retorna true si el problema p existeix a la sesió
     */
-    bool ses_prob_find(string p);
+    bool ses_prob_find(const string &p);
 
-    bool buscar(const BinTree<string> &t, string &p);
+    bool buscar(const BinTree<string> &t, const string &p);
     
     
     //Modificadors
@@ -84,6 +84,6 @@ class Sesio{
     */
     Cjt_ids problemes_sesio();
 
-    void wtf(const BinTree<string> &y, string &p, bool &copy);
+    void wtf(const BinTree<string> &y, const string &p, bool &copy);
 };
 #endif

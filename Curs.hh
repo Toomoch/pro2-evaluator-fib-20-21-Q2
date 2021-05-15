@@ -35,7 +35,7 @@ class Curs{
     \pre nses > 0
     \post Llegeix un Curs buit
     */
-    void llegir_curs(int nses);
+    void llegir_curs(const int &nses);
 
     /** @brief Incrementa el nombre d'inscrits en 1
     \pre Cert

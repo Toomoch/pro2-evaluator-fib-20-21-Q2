@@ -42,13 +42,13 @@ string Sesio::arrel()
     return tree.value();
 }
 
-bool Sesio::ses_prob_find(string p)
+bool Sesio::ses_prob_find(const string &p)
 {
    
     return buscar(tree, p);
 }
 
-bool Sesio::buscar(const BinTree<string> &t, string &p)
+bool Sesio::buscar(const BinTree<string> &t, const string &p)
 {
     bool found;
     if (t.empty()) found = false;

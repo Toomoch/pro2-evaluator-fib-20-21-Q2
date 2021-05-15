@@ -33,7 +33,7 @@ class Cjt_cursos{
     \pre Nombre de cursos > 0
     \post Llegeix un conjunt de cursos
     */
-    void llegeix_cjt_cursos(int ncurs);
+    void llegeix_cjt_cursos(const int &ncurs);
 
     /** @brief Afegir un curs al conjunt de cursos
     \pre Nou curs no existent al conjunt
@@ -45,13 +45,13 @@ class Cjt_cursos{
     \pre Cert
     \post Incrementa el nombre d'inscrits del curs donat en 1
     */    
-    void inc_inscrits_cjt(int c);
+    void inc_inscrits_cjt(const int &c);
 
     /** @brief Decrementa el nombre d'inscrits del curs donat en 1
     \pre Cert
     \post Decrementa el nombre d'inscrits del curs donat en 1
     */    
-    void dec_inscrits_cjt(int c);
+    void dec_inscrits_cjt(const int &c);
 
     //Consultors
     
@@ -78,13 +78,13 @@ class Cjt_cursos{
     \pre Cert
     \post Indica si el curs està dins del conjunt
     */
-    bool existeix_curs(int c);
+    bool existeix_curs(const int &c);
     
     /** @brief Retorna el nombre d'inscrits en el curs donat
     \pre Cert
     \post Retorna el nombre d'inscrits en el curs donat
     */
-    int num_inscrits_cjt(int c);
+    int num_inscrits_cjt(const int &c);
 
     void cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
 

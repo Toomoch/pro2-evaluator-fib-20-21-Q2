@@ -2,7 +2,7 @@
 Cjt_sesions::Cjt_sesions(){
 
 }
-void Cjt_sesions::llegir_cjt_sesions(int nsesio) {
+void Cjt_sesions::llegir_cjt_sesions(const int &nsesio) {
     string identif;
     
     for (int i = 0; i < nsesio; i++)
@@ -16,7 +16,7 @@ void Cjt_sesions::llegir_cjt_sesions(int nsesio) {
 }
 
 
-void Cjt_sesions::afegir_sesio(string identif)
+void Cjt_sesions::afegir_sesio(const string &identif)
 {
     Sesio sesi;
     sesi.llegir_ses();
@@ -35,7 +35,7 @@ void Cjt_sesions::escriure_cjt_sesio()
     
 }
 
-void Cjt_sesions::escriure_sesio(string s)
+void Cjt_sesions::escriure_sesio(const string &s)
 {
     
         cout<<s<<" "<<mapa[s].num_problemes()<<" ";
@@ -44,14 +44,14 @@ void Cjt_sesions::escriure_sesio(string s)
     
 }
 
-bool Cjt_sesions::existeix_sesio(string u) {
+bool Cjt_sesions::existeix_sesio(const string &u) {
     map<string, Sesio>::iterator it;
     it = mapa.find(u);
     if (it == mapa.end()) return false;
     else return true;
 }
 
-Cjt_ids Cjt_sesions::problemes_cjt_sesio(string u)
+Cjt_ids Cjt_sesions::problemes_cjt_sesio(const string &u)
 {
     return mapa[u].problemes_sesio();
 }

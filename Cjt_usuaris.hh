@@ -32,20 +32,20 @@ class Cjt_usuaris{
         \pre Usuari no existent al conjunt
         \post Nou element al conjunt d'Usuaris amb id = u
         */
-        void afegir_usuari(string u);
+        void afegir_usuari(const string &u);
         
         /** @brief Elimina l'usuari del Cjt d'usuaris amb id = eu
         \pre Cert
         \post Elimina l'usuari de la llista d'usuaris amb id = eu
         */
-        void eliminar_usuari(string u);
+        void eliminar_usuari(const string &u);
         
         /** @brief Omple el conjunt d'usuaris 
         \pre Cert
         \post Conjunt d'Usuaris omplert amb els Usuaris donats
         */
-        void llegir_usuaris(int nu);
-        
+        void llegir_usuaris(const int &nu);
+
         /** @brief Inscriu l'usuari u al curs c
         \pre Usuari existent
         \post Inscriu l'usuari u al curs c
@@ -56,26 +56,26 @@ class Cjt_usuaris{
         \pre Cert
         \post Realitza un enviament de problema de l'Usuari u
         */
-        void enviament(string u, string p, int r);
+        void enviament(const string &u, const string &p, const int &r);
 
         //Consultors
         /** @brief Retorna el numero del curs en que està inscrit l'usuari
         \pre Usuari existent
         \post Retorna el numero del curs en que està inscrit l'usuari (en cas contrari retorna 0)
         */
-        int curs_inscrit(string u);
+        int curs_inscrit(const string &u);
 
         /** @brief Escriu els problemes resolts del Usuari
         \pre Cert
         \post Escriu els problemes resolts del Usuari
         */
-        void escriu_resolts_cjt(string u);
+        void escriu_resolts_cjt(const string &u);
 
         /** @brief Escriu els problemes enviables del Usuari
         \pre Cert
         \post Escriu els problemes enviables del Usuari
         */
-        void escriu_enviables_cjt(string u);
+        void escriu_enviables_cjt(const string &u);
 
         /** @brief Escriu els Usuaris pertanyents al conjunt
         \pre Cert
@@ -87,13 +87,13 @@ class Cjt_usuaris{
         \pre Cert
         \post Escriu l'Usuari u del conjunt amb els seus enviaments respectius
         */
-        void llistar_usuari(string u);
+        void llistar_usuari(const string &u);
 
         /** @brief Indica si l'usuari està al conjunt
         \pre Cert
         \post Indica si l'usuari està al conjunt
         */
-        bool existeix_usuari(string u);
+        bool existeix_usuari(const string &u);
 
 };
 #endif

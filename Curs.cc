@@ -5,7 +5,7 @@ Curs::Curs()
     acabaments = 0;
 }
 
-void Curs::llegir_curs(int nses)
+void Curs::llegir_curs(const int &nses)
 {
     string sesi;
     for (int i = 0; i < nses; i++)

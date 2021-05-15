@@ -4,7 +4,7 @@ Cjt_usuaris::Cjt_usuaris()
 
 }
 
-void Cjt_usuaris::llegir_usuaris(int nu)
+void Cjt_usuaris::llegir_usuaris(const int &nu)
 {
     
     string s;
@@ -17,21 +17,9 @@ void Cjt_usuaris::llegir_usuaris(int nu)
     
 }
 
-void Cjt_usuaris::afegir_usuari(string u)
+void Cjt_usuaris::afegir_usuari(const string &u)
 {
     Usuari au;
-    /*
-    pair< map<string, Usuari>::iterator,bool> valor;
-    valor = mapa.insert(pair<string,Usuari> (u,au));
-    if (valor.second==false) 
-    {
-        cout<<"error: el usuario ya existe"<<endl;
-    } 
-    else 
-    {
-        cout<<"map.size()"<<endl;
-    }
-    */
     int oldsize = mapa.size();
     mapa.insert(pair<string,Usuari> (u,au));
     int newsize = mapa.size();
@@ -45,37 +33,30 @@ void Cjt_usuaris::afegir_usuari(string u)
     }
 }
 
-void Cjt_usuaris::eliminar_usuari(string u)
+void Cjt_usuaris::eliminar_usuari(const string &u)
 {
-    
-    
     mapa.erase(u);
-    
-    
     cout<<mapa.size()<<endl;
-    
-    
-    
 }
 
-int Cjt_usuaris::curs_inscrit(string u)
+int Cjt_usuaris::curs_inscrit(const string &u)
 {
     return mapa[u].curs_usuari();
 }
 
-bool Cjt_usuaris::existeix_usuari(string u) {
+bool Cjt_usuaris::existeix_usuari(const string &u) {
     map<string, Usuari>::iterator it;
     it = mapa.find(u);
     if (it == mapa.end()) return false;
     else return true;
 }
 
-void Cjt_usuaris::escriu_resolts_cjt(string u)
+void Cjt_usuaris::escriu_resolts_cjt(const string &u)
 {
     mapa[u].escriu_resolts();
 }
 
-void Cjt_usuaris::escriu_enviables_cjt(string u)
+void Cjt_usuaris::escriu_enviables_cjt(const string &u)
 {
     mapa[u].escriu_enviables();
 }
@@ -89,7 +70,7 @@ void Cjt_usuaris::llistar_usuaris()
     
 }
 
-void Cjt_usuaris::llistar_usuari(string u)
+void Cjt_usuaris::llistar_usuari(const string &u)
 {
     
     cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].intent()<<","<<mapa[u].resolt()<<","<<mapa[u].curs_usuari()<<")"<<endl;
@@ -103,7 +84,7 @@ void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions 
     mapa[u].inscriure_curs(c);
 }
 /*
-void Cjt_usuaris::enviament(string u, string p, int r) 
+void Cjt_usuaris::enviament(const string &u, const string &p, const int &r) 
 {
     map <string,Usuari>::iterator it = mapa.find(u);
     
