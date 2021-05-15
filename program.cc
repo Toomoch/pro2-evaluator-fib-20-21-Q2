@@ -59,11 +59,11 @@ int main ()
         else if (comando == "nueva_sesion" or comando == "ns")
         {
             
-            string ses_ns;
-            cin>>ses_ns;
+            string ses;
+            cin>>ses;
             cout<<"#"<<comando;
-            cout<<" "<<ses_ns<<endl;
-            if (not q.existeix_sesio(ses_ns)) q.afegir_sesio(ses_ns);
+            cout<<" "<<ses<<endl;
+            if (not q.existeix_sesio(ses)) q.afegir_sesio(ses);
             else cout<<"error: la sesion ya existe"<<endl;
             
         }
@@ -77,26 +77,26 @@ int main ()
         else if (comando == "alta_usuario" or comando == "a")
         {
 
-            string usernou;
-            cin>>usernou;
+            string user;
+            cin>>user;
             cout<<"#"<<comando;
-            cout<<" "<<usernou<<endl;
-            u.afegir_usuari(usernou);
+            cout<<" "<<user<<endl;
+            u.afegir_usuari(user);
         }
         else if (comando == "baja_usuario" or comando == "b")
         {
             
-            string userdel;
-            cin>>userdel;
+            string user;
+            cin>>user;
             cout<<"#"<<comando;
-            cout<<" "<<userdel<<endl;
-            if (u.existeix_usuari(userdel)) 
+            cout<<" "<<user<<endl;
+            if (u.existeix_usuari(user)) 
             {
                 
-                int cu_b = u.curs_inscrit(userdel);
-                u.eliminar_usuari(userdel);
+                int curs = u.curs_inscrit(user);
+                u.eliminar_usuari(user);
 
-                if (cu_b != 0) c.dec_inscrits_cjt(cu_b);
+                if (curs != 0) c.dec_inscrits_cjt(curs);
                 
             }
             else cout<<"error: el usuario no existe"<<endl;
@@ -105,19 +105,19 @@ int main ()
         
         else if (comando == "inscribir_curso" or comando == "i")
         {
-            string usr;
-            cin>>usr;
-            int cursusr;
-            cin>>cursusr;
+            string user;
+            cin>>user;
+            int curs;
+            cin>>curs;
             cout<<"#"<<comando;
-            cout<<" "<<usr<<" "<<cursusr<<endl;
-            if (u.existeix_usuari(usr))
+            cout<<" "<<user<<" "<<curs<<endl;
+            if (u.existeix_usuari(user))
             {
-                if (c.existeix_curs(cursusr))
+                if (c.existeix_curs(curs))
                 {
-                    if (u.curs_inscrit(usr) == 0) {
-                        u.cjt_inscriure_curs(cursusr, usr, q, c);
-                        cout<<c.num_inscrits_cjt(cursusr)<<endl;
+                    if (u.curs_inscrit(user) == 0) {
+                        u.cjt_inscriure_curs(curs, user, q, c);
+                        cout<<c.num_inscrits_cjt(curs)<<endl;
 
                     }
                     else cout<<"error: usuario inscrito en otro curso"<<endl;
@@ -131,32 +131,31 @@ int main ()
         else if (comando == "curso_usuario" or comando == "cu")
         {
             
-            string usrcurs;
-            cin>>usrcurs;
+            string user;
+            cin>>user;
             cout<<"#"<<comando;
-            cout<<" "<<usrcurs<<endl;
-            if (u.existeix_usuari(usrcurs)) 
+            cout<<" "<<user<<endl;
+            if (u.existeix_usuari(user)) 
             {
-                cout<<u.curs_inscrit(usrcurs)<<endl;
+                cout<<u.curs_inscrit(user)<<endl;
             }
             else cout<<"error: el usuario no existe"<<endl;
 
-            
         }
         
         else if (comando == "sesion_problema" or comando == "sp")
         {
-            int cursprob;
-            string probses;
-            cin>>cursprob>>probses;
+            int curs;
+            string prob;
+            cin>>curs>>prob;
             cout<<"#"<<comando;
-            cout<<" "<<cursprob<<" "<<probses<<endl;
+            cout<<" "<<curs<<" "<<prob<<endl;
             
-            if (c.existeix_curs(cursprob)) 
+            if (c.existeix_curs(curs)) 
             {
-                if (p.existeix_problema(probses)) 
+                if (p.existeix_problema(prob)) 
                 {
-                    c.cjt_cursos_sesio_problema_existeix(cursprob, probses, q);
+                    c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
                 }
                 else cout<<"error: el problema no existe"<<endl;
             }
@@ -167,15 +166,15 @@ int main ()
         
         else if (comando == "problemas_resueltos" or comando == "pr")
         {
-            string usresol;
-            cin>>usresol;
+            string user;
+            cin>>user;
             cout<<"#"<<comando;
-            cout<<" "<<usresol<<endl;
-            if (u.existeix_usuari(usresol))
+            cout<<" "<<user<<endl;
+            if (u.existeix_usuari(user))
             {
-                if (u.curs_inscrit(usresol) != 0)
+                if (u.curs_inscrit(user) != 0)
                 {
-                    u.escriu_resolts_cjt(usresol);
+                    u.escriu_resolts_cjt(user);
                 }
                 
             }
@@ -187,16 +186,16 @@ int main ()
         
         else if (comando == "problemas_enviables" or comando == "pe")
         {
-            string usrenv;
-            cin>>usrenv;
+            string user;
+            cin>>user;
             cout<<"#"<<comando;
-            cout<<" "<<usrenv<<endl;
+            cout<<" "<<user<<endl;
             
-            if (u.existeix_usuari(usrenv))
+            if (u.existeix_usuari(user))
             {
-                if (u.curs_inscrit(usrenv) != 0)
+                if (u.curs_inscrit(user) != 0)
                 {
-                    u.escriu_enviables_cjt(usrenv);
+                    u.escriu_enviables_cjt(user);
                 }
                 else cout<<"error: usuario no inscrito en ningun curso"<<endl;
                 
@@ -206,12 +205,11 @@ int main ()
         
         else if (comando == "envio" or comando == "e")
         {
-            
-            string userenv, probenv;
+            string user, prob;
             int r;
-            cin>>userenv>>probenv>>r;
+            cin>>user>>prob>>r;
             cout<<"#"<<comando;
-            cout<<" "<<userenv<<probenv<<r<<endl;
+            cout<<" "<<prob<<prob<<r<<endl;
             //u.enviament(userenv, probenv, r);
             
         }
@@ -224,11 +222,11 @@ int main ()
 
         else if (comando == "escribir_problema" or comando == "ep")
         {
-            string prob_ep;
-            cin>>prob_ep;
+            string prob;
+            cin>>prob;
             cout<<"#"<<comando;
-            cout<<" "<<prob_ep<<endl;
-            if (p.existeix_problema(prob_ep)) p.escriure_problema(prob_ep);
+            cout<<" "<<prob<<endl;
+            if (p.existeix_problema(prob)) p.escriure_problema(prob);
             else cout<<"error: el problema no existe"<<endl;
             
         }
@@ -241,10 +239,10 @@ int main ()
 
         else if (comando == "escribir_sesion" or comando == "es")
         {
-            string ses_es;
-            cin>>ses_es;
-            cout<<"#"<<comando<<" "<<ses_es<<endl;
-            if (q.existeix_sesio(ses_es)) q.escriure_sesio(ses_es);
+            string ses;
+            cin>>ses;
+            cout<<"#"<<comando<<" "<<ses<<endl;
+            if (q.existeix_sesio(ses)) q.escriure_sesio(ses);
             else cout<<"error: la sesion no existe"<<endl;
             
         }
@@ -257,10 +255,10 @@ int main ()
 
         else if (comando == "escribir_curso" or comando == "ec")
         {
-            int cur_ec;
-            cin>>cur_ec;
-            cout<<"#"<<comando<<" "<<cur_ec<<endl;
-            if (c.existeix_curs(cur_ec)) c.escriu_curs(cur_ec);
+            int curs;
+            cin>>curs;
+            cout<<"#"<<comando<<" "<<curs<<endl;
+            if (c.existeix_curs(curs)) c.escriu_curs(curs);
             else cout<<"error: el curso no existe"<<endl;
         }
         
@@ -273,10 +271,10 @@ int main ()
         else if (comando == "escribir_usuario" or comando == "eu")
         {
             
-            string usr_lu;
-            cin>>usr_lu;
-            cout<<"#"<<comando<<" "<<usr_lu<<endl;
-            if (u.existeix_usuari(usr_lu)) u.llistar_usuari(usr_lu);
+            string user;
+            cin>>user;
+            cout<<"#"<<comando<<" "<<user<<endl;
+            if (u.existeix_usuari(user)) u.llistar_usuari(user);
             else cout<<"error: el usuario no existe"<<endl;
         }
         

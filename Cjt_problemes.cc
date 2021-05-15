@@ -34,12 +34,19 @@ bool Cjt_problemes::existeix_problema(const string &p)
 
 void Cjt_problemes::escriure_cjt_problemes()
 {
+    vector<pair<string, Problema>> ordenat;
     for (map <string, Problema>::iterator it = mapa.begin(); it != mapa.end(); ++it)
     {
-        int t = (*it).second.env_totals();
-        int e = (*it).second.env_exit();
+        ordenat.push_back(*it);
+    }
+    
+    sort(ordenat.begin(), ordenat.end(), cmp);
+    for (int i = 0; i < ordenat.size(); ++i)
+    {
+        int t = ordenat[i].second.env_totals();
+        int e = ordenat[i].second.env_exit();
         
-        cout<<(*it).first<<"("<<t<<","<<e<<","<<double((t+1))/(e+1)<<")"<<endl;
+        cout<<ordenat[i].first<<"("<<t<<","<<e<<","<<double((t+1))/(e+1)<<")"<<endl;
     }
     
 }
@@ -55,3 +62,23 @@ void Cjt_problemes::escriure_problema(const string &p)
     
 }
 
+bool Cjt_problemes::cmp(const pair<string,Problema>& a, const pair<string,Problema>& b) {
+
+    int t = a.second.env_totals();
+    int e = a.second.env_exit();
+    double a_rat = (t+1.0)/(e+1.0);
+
+    t = b.second.env_totals();
+    e = b.second.env_exit();
+    double b_rat = (t+1.0)/(e+1.0);
+
+    if(a_rat < b_rat) return true;
+
+    else if(b_rat < a_rat) return false;
+    
+    else 
+    {
+        if(a.first < b.first) return true;
+        else return false;
+    }
+}

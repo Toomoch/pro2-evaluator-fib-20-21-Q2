@@ -45,13 +45,13 @@ public:
     \pre Cert
     \post Retorna el número de enviaments totals del problema
     */
-    int env_totals();
+    int env_totals() const;
 
     /** @brief Retorna el número de enviaments exitosos del problema
     \pre Cert
     \post Retorna el número de enviaments exitosos del problema
     */
-    int env_exit();
+    int env_exit() const;
 
     
     //** @brief Escriu el problema 

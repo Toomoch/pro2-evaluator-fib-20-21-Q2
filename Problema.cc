@@ -4,12 +4,12 @@ Problema::Problema(){
     exit=0;
 }
 
-int Problema::env_exit()
+int Problema::env_exit() const
 {
     return exit;
 }
 
-int Problema::env_totals()
+int Problema::env_totals() const
 {
     return total;
 }

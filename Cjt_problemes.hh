@@ -8,7 +8,8 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <utility>
+#include <vector>
+#include <algorithm>
 /// \endcond
 
 #include "Problema.hh"
@@ -21,6 +22,9 @@ class Cjt_problemes {
 
 private:
     map <string, Problema> mapa;
+
+    static bool cmp(const pair<string,Problema>& a, const pair<string,Problema>& b);
+    
 public:
 
     //Constructors
@@ -62,12 +66,6 @@ public:
     */
     bool existeix_problema(const string &p);
 
-
-
-    
-
-
-    
 };
 
 #endif
