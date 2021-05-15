@@ -48,7 +48,7 @@ bool Sesio::ses_prob_find(string p)
     return buscar(tree, p);
 }
 
-bool Sesio::buscar(const BinTree<string> &t, string p)
+bool Sesio::buscar(const BinTree<string> &t, string &p)
 {
     bool found;
     if (t.empty()) found = false;
@@ -64,14 +64,31 @@ bool Sesio::buscar(const BinTree<string> &t, string p)
     return found;                                                              
 }
 /*
-void wtf(BinTree<string> &y, string p)
+void Sesio::wtf(const BinTree<string> &y, string &p, bool &copy)
 {
-    if (y.value()==p)
+    if (not y.empty())
     {
-        if (y.value.em)
-    }
+        if (copy)
+        {
+            insertar(y.value());
+        }
+        else if (y.value() == p) 
+        {
+        
+            copy = true;
+            wtf(y.left(), p, copy);
+            wtf(y.right(), p, copy);
+        }
+        else 
+        {
+            wtf(y.left(), p, copy);
+            if (not copy)  wtf(y.right(), p, copy);
+        
+        }
+    }                                                              
 }
 */
+
 void Sesio::escriu_ses()
 {
     preorde_escriure_ses(tree);
@@ -101,24 +118,3 @@ Cjt_ids Sesio::problemes_sesio()
 {
     return setprob;
 }
-/*
-string Sesio::problemes_sesio_pos(const set<string>::iterator &it)
-{
-    return setprob.pos(it);
-}
-
-set<string>::iterator Sesio::problemes_sesio_principi()
-{
-    return setprob.principi();
-}
-    
-set<string>::iterator Sesio::problemes_sesio_final()
-{
-    return setprob.final();
-}
-
-bool Sesio::problemes_sesio_insertar(string id)
-{
-    setprob.insert
-}
-*/

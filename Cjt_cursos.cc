@@ -69,49 +69,36 @@ int Cjt_cursos::num_inscrits_cjt(int c)
     return vec[c-1].num_inscrits();
 }
 
-/*
-void Cjt_cursos::ses_prob_curs(int c, string p) 
-{
-    list <string> l = vec[c-1].llista_ses();
-    
-    
-}
-*/
-
 void Cjt_cursos::escriu_cjt_cursos() 
 {
     for (int i = 0; i < vec.size(); ++i)
     {
-        
-        list <string> l = vec[i].llista_ses();
-        cout<<(i+1)<<" "<<vec[i].num_acabaments()<<" "<<vec[i].num_inscrits()<<" "<<l.size()<<" "<<"(";
-
-        list <string>::iterator preit = (l.begin());
-        cout<<(*preit);
-        for (list <string>::iterator it = (++preit); it != l.end(); ++it)
-        {
-            cout<<" "<<(*it);
-        }
-
-        cout<<")"<<endl;
+        cout<<i+1<<" ";
+        vec[i].escriure_curs();
     }
     
 }
 
 void Cjt_cursos::escriu_curs(int c) 
 {
-    list <string> l = vec[c-1].llista_ses();
-    cout<<c<<" "<<vec[c-1].num_acabaments()<<" "<<vec[c-1].num_inscrits()<<" "<<l.size()<<" "<<"(";
+    cout<<c<<" ";
+    vec[c-1].escriure_curs();
+    
+    
+}
 
-    list <string>::iterator preit = l.begin();
-    cout<<(*preit);
-    for (list <string>::iterator it = (++l.begin()); it != l.end(); ++it)
+
+void Cjt_cursos::cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q)
+{
+    string ses = vec[c-1].curs_sesio_problema_existeix(p, q);
+    if (ses != "-")
     {
-        cout<<" "<<(*it);
+        cout<<ses<<endl;
+    }
+    else 
+    {
+        cout<<"error: el problema no pertenece al curso"<<endl;
     }
 
-    cout<<")"<<endl;
-    
-    
 }
 

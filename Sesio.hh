@@ -61,7 +61,7 @@ class Sesio{
     */
     bool ses_prob_find(string p);
 
-    bool buscar(const BinTree<string> &t, string p);
+    bool buscar(const BinTree<string> &t, string &p);
     
     
     //Modificadors
@@ -82,14 +82,7 @@ class Sesio{
     \post Retorna el conjunt de problemes que conté la sessió
     */
     Cjt_ids problemes_sesio();
-    /*
-    string problemes_sesio_pos(const set<string>::iterator &it);
 
-    set<string>::iterator problemes_sesio_principi();
-    
-    set<string>::iterator problemes_sesio_final();
-
-    bool problemes_sesio_insertar(string id);
-    */
+    void wtf(const BinTree<string> &y, string &p, bool &copy);
 };
 #endif

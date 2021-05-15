@@ -20,27 +20,22 @@ using namespace std;
 
 int main () 
 {
-    //cout<<"llegint prob"<<endl;
     int nprob;
     cin>>nprob;
     Cjt_problemes p;
     string temp;
     p.llegir_Cjt_problemes(nprob);
 
-    //cout<<"llegint ses"<<endl;
     int nsesio;
     cin>>nsesio;
     Cjt_sesions q;
     q.llegir_cjt_sesions(nsesio);
 
-    //cout<<"llegint cursos"<<endl;
     int ncurs;
     cin>>ncurs;
     Cjt_cursos c;
     c.llegeix_cjt_cursos(ncurs);
     
-
-    //cout<<"llegint users"<<endl;
     int m;
     cin>>m;
     Cjt_usuaris u;
@@ -51,7 +46,6 @@ int main ()
     while (comando!="fin")
     {
         
-        
         if (comando == "nuevo_problema" or comando == "np")
         {
             
@@ -61,6 +55,7 @@ int main ()
             cout<<" "<<prob<<endl;
             p.afegeix_Cjt_problemes(prob);
         }
+        
         else if (comando == "nueva_sesion" or comando == "ns")
         {
             
@@ -165,21 +160,9 @@ int main ()
             {
                 if (p.existeix_problema(probses)) 
                 {
-                    list <string> l = c.llista_ses_cjt(cursprob);
-                    /*
-                    for (list<string>::iterator it = l.begin(); it != l.end(); ++it)
-                    {
-                        cout<<(*it)<<endl;
-                    }
-                    cout<<"-----------"<<endl;
-                    */
-                    string sesfound = q.ses_prob_find_cjt(l, probses);
-                    if (sesfound == "-") cout<<"error: el problema no pertenece al curso"<<endl;
-                    else cout<<sesfound<<endl;
-
+                    c.cjt_cursos_sesio_problema_existeix(cursprob, probses, q);
                 }
                 else cout<<"error: el problema no existe"<<endl;
-
             }
             else cout<<"error: el curso no existe"<<endl;
             
@@ -242,6 +225,7 @@ int main ()
             cout<<"#"<<comando<<endl;
             p.escriure_cjt_problemes();
         }
+
         else if (comando == "escribir_problema" or comando == "ep")
         {
             string prob_ep;

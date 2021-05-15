@@ -101,17 +101,21 @@ void Cjt_usuaris::llistar_usuari(string u)
     cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].intent()<<","<<mapa[u].resolt()<<","<<mapa[u].curs_usuari()<<")"<<endl;
     
 }
-
+/*
 void Cjt_usuaris::enviament(string u, string p, int r) 
 {
     map <string,Usuari>::iterator it = mapa.find(u);
+    
     if (r==1) 
     {
         (*it).second.treure_enviable(p);
+        int curs = (*it).second.curs_usuari();
+
     }
     else 
     {
-
+        
     }
     (*it).second.afegir_intentats(p);
 }
+*/

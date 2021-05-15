@@ -10,7 +10,7 @@
 #include <list>
 #include <set>
 /// \endcond
-#include "Cjt_ids.hh"
+
 #include "Cjt_sesions.hh"
 using namespace std;
 
@@ -56,6 +56,12 @@ class Curs{
     */
     list <string> llista_ses();
 
+    /** @brief Escriu el Curs i les seves característiques
+    \pre Cert
+    \post Escriu les característiques del curs: nombre d'usuaris que l'han completat, nombre d'inscrits, nombre de sesions i els identificadors d'aquestes
+    */
+    void escriure_curs();
+
     /** @brief Retorna el nombre d'inscrits en el curs
     \pre Cert
     \post Retorna el nombre d'inscrits en el curs
@@ -73,6 +79,8 @@ class Curs{
     \post Retorna si el curs té un conflicte de interseccio de problemes
     */
     bool interseccio(Cjt_sesions &q);
+
+    string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
     
 };
 

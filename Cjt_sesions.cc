@@ -75,19 +75,18 @@ Cjt_ids Cjt_sesions::problemes_cjt_sesio(string u)
 {
     return mapa[u].problemes_sesio();
 }
-/*
-string Cjt_sesions::problemes_cjt_sesio_pos(const set<string>::iterator &it, string u)
-{
-    return mapa[u].problemes_sesio_pos(it);
-}
 
-set<string>::iterator Cjt_sesions::problemes_cjt_sesio_principi(string u)
+
+bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
 {
-    return mapa[u].problemes_sesio_principi();
-}
+    //map<string,Sesio>::iterator it = mapa.find
     
-set<string>::iterator Cjt_sesions::problemes_cjt_sesio_final(string u)
-{
-    return mapa[u].problemes_sesio_final();
+    
+    //while (it != mapa.begin())
+    
+    Cjt_ids probl_sesio;
+        
+    if (mapa[s].problemes_sesio().existeix(p)) return true;
+    
+    return false;
 }
-*/

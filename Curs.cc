@@ -21,6 +21,23 @@ list <string> Curs::llista_ses()
     return ses_del_curs;
 }
 
+void Curs::escriure_curs()
+{
+    
+    cout<<num_acabaments()<<" "<<num_inscrits()<<" "<<ses_del_curs.size()<<" "<<"(";
+
+    list <string>::iterator it = ses_del_curs.begin();
+    cout<<(*it);
+    ++it;
+    while (it != ses_del_curs.end())
+    {
+        cout<<" "<<(*it);
+        ++it;
+    }
+
+    cout<<")"<<endl;
+}
+
 void Curs::inc_inscrits()
 {
     ++inscrits;
@@ -65,4 +82,14 @@ bool Curs::interseccio(Cjt_sesions &q)
         ++it;
     }
     return found;
+}
+
+string Curs::curs_sesio_problema_existeix(const string &p, Cjt_sesions &q)
+{
+    
+    for (list<string>::iterator it = ses_del_curs.begin(); it != ses_del_curs.end(); ++it)
+    {
+        if (q.sesio_problema_existeix(p, (*it))) return (*it);
+    }
+    return "-";
 }

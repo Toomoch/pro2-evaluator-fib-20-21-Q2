@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <string>
 /// \endcond
 #include "Curs.hh"
 using namespace std;
@@ -91,7 +92,7 @@ class Cjt_cursos{
     */
     int num_inscrits_cjt(int c);
 
-    
+    void cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
 
 };
 #endif

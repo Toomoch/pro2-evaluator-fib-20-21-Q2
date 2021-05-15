@@ -1,5 +1,5 @@
-/** @file Curs.hh
-    @brief Especificació de la classe Curs
+/** @file Cjt_ids.hh
+    @brief Especificació de la classe Cjt_ids
 */
 
 #ifndef CJT_IDS_HH
@@ -12,6 +12,10 @@
 /// \endcond
 using namespace std;
 
+
+/** @class Cjt_ids
+    @brief Representa el tipus Cjt_ids
+*/
 class Cjt_ids{
     private:
         set<string> prob;
@@ -22,12 +26,7 @@ class Cjt_ids{
             ret = prob.insert(p);
             return ret.second;
         }
-        /*
-        string pos(const set<string>::iterator &it)
-        {
-            return (*it);
-        }
-        */
+        
         set<string>::iterator principi()
         {
             return prob.begin();
@@ -38,6 +37,11 @@ class Cjt_ids{
             return prob.end();
         }
 
+        bool existeix (const string &p)
+        {
+            if (prob.find(p)==prob.end()) return false;
+            return true;
+        }
 
 
 };

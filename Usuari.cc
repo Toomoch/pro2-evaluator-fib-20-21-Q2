@@ -71,7 +71,7 @@ void Usuari::treure_enviable(string p)
     map <string,int>::iterator it;
     it = enviables.find(p);
     ++(*it).second;
-    ++env;
+    
     resolts.insert(*it);
     enviables.erase(p);
     
@@ -80,4 +80,5 @@ void Usuari::treure_enviable(string p)
 void Usuari::afegir_intentats(string p)
 {
     intentats.insert(p);
+    ++env;
 }
