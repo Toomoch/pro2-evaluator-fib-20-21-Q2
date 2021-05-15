@@ -35,13 +35,13 @@ public:
     \pre Cert
     \post Afegeix un problema al Conjunt de problemes
     */
-    void afegeix_Cjt_problemes(string prob);
+    void afegeix_Cjt_problemes(const string &prob);
 
     /** @brief Llegeix un Conjunt
     \pre Nombre de problemes > 0
     \post Llegeix un Conjunt de problemes
     */
-    void llegir_Cjt_problemes(int np);
+    void llegir_Cjt_problemes(const int &np);
 
     //Consultor
     /** @brief Escriu el Conjunt de problemes
@@ -54,13 +54,13 @@ public:
     \pre Cert
     \post Escriu el problema del Conjunt
     */
-    void escriure_problema(string p);
+    void escriure_problema(const string &p);
 
     /** @brief Indica si el problema p existeix al conjunt
     \pre Cert
     \post Indica si el problema p existeix al conjunt
     */
-    bool existeix_problema(string p);
+    bool existeix_problema(const string &p);
 
 
 

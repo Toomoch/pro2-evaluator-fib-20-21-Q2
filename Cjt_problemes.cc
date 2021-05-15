@@ -1,7 +1,7 @@
 #include "Cjt_problemes.hh"
 Cjt_problemes::Cjt_problemes(){}
 
-void Cjt_problemes::afegeix_Cjt_problemes(string prob) {
+void Cjt_problemes::afegeix_Cjt_problemes(const string &prob) {
 
     Problema p;
     int oldsize = mapa.size();
@@ -13,7 +13,7 @@ void Cjt_problemes::afegeix_Cjt_problemes(string prob) {
     else cout<<"error: el problema ya existe"<<endl;
 }
 
-void Cjt_problemes::llegir_Cjt_problemes(int np)
+void Cjt_problemes::llegir_Cjt_problemes(const int &np)
 {
     
     string s;
@@ -26,7 +26,7 @@ void Cjt_problemes::llegir_Cjt_problemes(int np)
     
 }
 
-bool Cjt_problemes::existeix_problema(string p)
+bool Cjt_problemes::existeix_problema(const string &p)
 {
     if (mapa.find(p) == mapa.end()) return false;
     else return true; 
@@ -44,7 +44,7 @@ void Cjt_problemes::escriure_cjt_problemes()
     
 }
 
-void Cjt_problemes::escriure_problema(string p)
+void Cjt_problemes::escriure_problema(const string &p)
 {
     
         int t = mapa[p].env_totals();

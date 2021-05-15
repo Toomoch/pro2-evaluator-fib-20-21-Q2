@@ -54,8 +54,6 @@ class Cjt_cursos{
     void dec_inscrits_cjt(const int &c);
 
     //Consultors
-    
-
     /** @brief Escriu els cursos pertanyents al conjunt
     \pre Cert
     \post Escriu els cursos pertanyents al conjunt
