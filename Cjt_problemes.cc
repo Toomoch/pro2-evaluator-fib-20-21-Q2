@@ -53,12 +53,10 @@ void Cjt_problemes::escriure_cjt_problemes()
 
 void Cjt_problemes::escriure_problema(const string &p)
 {
-    
-        int t = mapa[p].env_totals();
-        int e = mapa[p].env_exit();
+    int t = mapa[p].env_totals();
+    int e = mapa[p].env_exit();
         
-        cout<<p<<"("<<t<<","<<e<<","<<double((t+1))/(e+1)<<")"<<endl;
-    
+    cout<<p<<"("<<t<<","<<e<<","<<double((t+1))/(e+1)<<")"<<endl;
     
 }
 
@@ -81,4 +79,14 @@ bool Cjt_problemes::cmp(const pair<string,Problema>& a, const pair<string,Proble
         if(a.first < b.first) return true;
         else return false;
     }
+}
+
+void Cjt_problemes::inc_env_total_cjt(const string &p)
+{
+    mapa[p].inc_env_total();
+}
+
+void Cjt_problemes::inc_env_exit_cjt(const string &p)
+{
+    mapa[p].inc_env_exit();
 }

@@ -77,7 +77,8 @@ class Curs{
     string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
 
     void inscriu_curs(Usuari &u, Cjt_sesions &q);
-    
+
+    void inc_acabaments();
 };
 
 #endif

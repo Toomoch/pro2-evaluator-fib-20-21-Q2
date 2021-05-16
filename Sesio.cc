@@ -37,57 +37,36 @@ int Sesio::calc_numero_problemes(const BinTree <string> &temp){
     return num;
 }
 
-string Sesio::arrel()
+void Sesio::arrel(Usuari &u)
 {
-    return tree.value();
-}
-
-bool Sesio::ses_prob_find(const string &p)
-{
-   
-    return buscar(tree, p);
-}
-
-bool Sesio::buscar(const BinTree<string> &t, const string &p)
-{
-    bool found;
-    if (t.empty()) found = false;
-    
-    else if (t.value() == p) found = true;
-    
-    else 
-    {   
-        found = buscar(t.left(), p);
-        if (not found)  found = buscar(t.right(), p);
-        
-    }
-    return found;                                                              
-}
-/*
-void Sesio::wtf(const BinTree<string> &y, string &p, bool &copy)
-{
-    if (not y.empty())
+    if (u.resolt() == 0)
     {
-        if (copy)
-        {
-            insertar(y.value());
-        }
-        else if (y.value() == p) 
-        {
-        
-            copy = true;
-            wtf(y.left(), p, copy);
-            wtf(y.right(), p, copy);
-        }
-        else 
-        {
-            wtf(y.left(), p, copy);
-            if (not copy)  wtf(y.right(), p, copy);
-        
-        }
-    }                                                              
+        u.afegir_enviables(tree.value());
+    }
+    else
+    {
+        afegir_problemes_tree(tree, u);
+    }
+    
 }
-*/
+
+
+void Sesio::afegir_problemes_tree(const BinTree<string>& t, Usuari& u)
+{
+
+    if (not t.empty())
+    {    
+        if (not u.problema_resolt(t.value()))
+        {
+            u.afegir_enviables(t.value());
+        }
+        else
+        {
+            if (not t.right().empty()) afegir_problemes_tree(t.right(),u);
+            if (not t.left().empty()) afegir_problemes_tree(t.left(),u);
+        }
+    }
+}
 
 void Sesio::escriu_ses()
 {
@@ -117,4 +96,51 @@ int Sesio::num_problemes()
 Cjt_ids Sesio::problemes_sesio()
 {
     return setprob;
+}
+
+void Sesio::afegeix_fulles(const string &p, Usuari &u)
+{
+    buscar_arbre(tree, p, u);
+}
+
+void Sesio::buscar_arbre(const BinTree<string> &t, const string &p, Usuari &u)
+{
+    if (not t.empty())
+    {
+        if (t.value() == p) afegir_enviable(t, u);
+        else 
+        {
+            buscar_arbre(t.left(), p, u);
+            buscar_arbre(t.right(), p, u);
+        }
+    }
+}
+
+void Sesio::afegir_enviable(const BinTree<string> &t, Usuari &u)
+{
+    if(not t.right().empty())
+    {
+        if(u.problema_resolt(t.right().value()))
+        {
+            afegir_enviable(t.right(),u);
+        }
+
+        else 
+        {
+            u.afegir_enviables(t.right().value());
+        }
+    }
+    
+    if(not t.left().empty())
+    {
+        if(u.problema_resolt(t.left().value()))
+        {
+            afegir_enviable(t.left(),u);
+        }
+        else
+        {
+            u.afegir_enviables(t.left().value());
+        }
+        
+    }
 }

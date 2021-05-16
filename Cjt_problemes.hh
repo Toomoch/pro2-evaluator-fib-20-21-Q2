@@ -24,7 +24,7 @@ private:
     map <string, Problema> mapa;
 
     static bool cmp(const pair<string,Problema>& a, const pair<string,Problema>& b);
-    
+
 public:
 
     //Constructors
@@ -46,6 +46,18 @@ public:
     \post Llegeix un Conjunt de problemes
     */
     void llegir_Cjt_problemes(const int &np);
+
+    /** @brief Incrementa el total d'enviaments en 1 del problema p
+    \pre Es fa un nou enviament
+    \post Incrementa el total d'enviaments del problema en 1 problema p
+    */
+    void inc_env_total_cjt(const string &p);
+
+    /** @brief Incrementa el total d'enviaments exitosos en 1 problema p
+    \pre Es fa un nou enviament correcte
+    \post Incrementa el total d'enviaments exitosos del problema en 1 problema p
+    */
+    void inc_env_exit_cjt(const string &p);
 
     //Consultor
     /** @brief Escriu el Conjunt de problemes

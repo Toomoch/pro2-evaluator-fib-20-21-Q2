@@ -46,7 +46,7 @@ class Sesio{
     \pre Existeix la sessió i no és buida
     \post Retorna el problema arrel de la sesió
     */
-    string arrel();
+    void arrel(Usuari &u);
 
     /** @brief Escriu els problemes de la sesió
     \pre Cert
@@ -62,7 +62,7 @@ class Sesio{
     */
     bool ses_prob_find(const string &p);
 
-    bool buscar(const BinTree<string> &t, const string &p);
+    void buscar_arbre(const BinTree<string> &t, const string &p, Usuari &u);
     
     
     //Modificadors
@@ -84,6 +84,10 @@ class Sesio{
     */
     Cjt_ids problemes_sesio();
 
-    void wtf(const BinTree<string> &y, const string &p, bool &copy);
+    void afegeix_fulles(const string &p, Usuari &u);
+
+    void afegir_enviable(const BinTree<string> &t, Usuari &u);
+
+    void afegir_problemes_tree(const BinTree<string>& t, Usuari& u);
 };
 #endif

@@ -100,3 +100,8 @@ void Curs::inscriu_curs(Usuari &u, Cjt_sesions &q)
     ++inscrits;
     
 }
+
+void Curs::inc_acabaments()
+{
+    ++acabaments;
+}

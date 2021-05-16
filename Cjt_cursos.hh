@@ -84,9 +84,10 @@ class Cjt_cursos{
     */
     int num_inscrits_cjt(const int &c);
 
-    void cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
+    string cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
 
     void inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q);
-
+    
+    void cjt_inc_acabaments(const int &c);
 };
 #endif

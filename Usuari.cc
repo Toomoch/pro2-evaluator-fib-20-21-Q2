@@ -50,6 +50,12 @@ int Usuari::resolt()
     return resolts.size();
 }
 
+int Usuari::enviable()
+{
+    return enviables.size();
+}
+
+
 int Usuari::total()
 {
     return env;
@@ -60,24 +66,51 @@ int Usuari::intent()
     return intentats.size();
 }
 
-void Usuari::treure_enviable(const string &p)
+void Usuari::afegir_resolt(const string &p)
 {
-    map <string,int>::iterator it;
-    it = enviables.find(p);
-    ++(*it).second;
+    //map <string,int>::iterator it;
     
-    resolts.insert(*it);
-    enviables.erase(p);
+    //it = enviables.find(p);
+    //cout<<"despres"<<endl;
+    //pair <string,int> parell = (*it);
+    
+     //sumem un intent
+    
+    resolts.insert(make_pair(p, enviables[p])); //insertem a resolts
+    
+    enviables.erase(p); //esborrem denviables
+    //escriu_enviables();
+    //cout<<n<<" esborrat "<<p<<endl;
+    //escriu_enviables();
+    //cout<<"---"<<endl;
     
 }
 
 void Usuari::afegir_intentats(const string &p)
 {
+    ++enviables[p];
     intentats.insert(p);
     ++env;
 }
 
 void Usuari::afegir_enviables(const string &p)
 {
+    //cout<<p<<endl;
     enviables.insert(make_pair(p,0));
+}
+
+void Usuari::inc_enviable(const string &p)
+{
+    ++enviables[p];
+}
+
+bool Usuari::problema_resolt(const string &p)
+{
+    if (resolts.count(p) == 1) return true;
+    else return false;
+}
+
+void Usuari::acabar_curs()
+{
+    inscrit = 0;
 }

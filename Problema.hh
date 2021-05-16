@@ -32,13 +32,13 @@ public:
     \pre Es fa un nou enviament
     \post Incrementa el total d'enviaments del problema en 1
     */
-    void afegeix_env_total();
+    void inc_env_total();
 
     /** @brief Incrementa el total d'enviaments exitosos en 1
     \pre Es fa un nou enviament correcte
     \post Incrementa el total d'enviaments exitosos del problema en 1
     */
-    void afegeix_env_exit();
+    void inc_env_exit();
 
     //Consultors
     /** @brief Retorna el número de enviaments totals del problema
@@ -53,15 +53,6 @@ public:
     */
     int env_exit() const;
 
-    
-    //** @brief Escriu el problema 
-    //\pre Cert
-    //\post Escriu el problema
-    //*/
-    //void escriure_problema();
-    
-
-    
 };
 
 #endif

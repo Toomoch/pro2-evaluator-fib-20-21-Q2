@@ -36,10 +36,10 @@ int main ()
     Cjt_cursos c;
     c.llegeix_cjt_cursos(ncurs);
     
-    int m;
-    cin>>m;
+    int nuser;
+    cin>>nuser;
     Cjt_usuaris u;
-    u.llegir_usuaris(m);
+    u.llegir_usuaris(nuser);
     
     string comando;
     cin>>comando;
@@ -155,7 +155,10 @@ int main ()
             {
                 if (p.existeix_problema(prob)) 
                 {
-                    c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
+                    string ses = c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
+                    if (ses != "-") cout<<ses<<endl;
+                    else cout<<"error: el problema no pertenece al curso"<<endl;
+
                 }
                 else cout<<"error: el problema no existe"<<endl;
             }
@@ -172,10 +175,7 @@ int main ()
             cout<<" "<<user<<endl;
             if (u.existeix_usuari(user))
             {
-                if (u.curs_inscrit(user) != 0)
-                {
-                    u.escriu_resolts_cjt(user);
-                }
+                u.escriu_resolts_cjt(user);
                 
             }
             else cout<<"error: el usuario no existe"<<endl;
@@ -209,8 +209,9 @@ int main ()
             int r;
             cin>>user>>prob>>r;
             cout<<"#"<<comando;
-            cout<<" "<<prob<<prob<<r<<endl;
-            //u.enviament(userenv, probenv, r);
+            cout<<" "<<user<<" "<<prob<<" "<<r<<endl;
+            
+            u.enviament(user, prob, r, c, p, q);
             
         }
         
@@ -277,7 +278,14 @@ int main ()
             if (u.existeix_usuari(user)) u.llistar_usuari(user);
             else cout<<"error: el usuario no existe"<<endl;
         }
-        
+        /*
+        else if (comando == "test")
+        {
+            int curs;
+            cin>>curs;
+            cout<<c.num_inscrits_cjt(curs);
+        }
+        */
         cin>>comando;
     }
 }

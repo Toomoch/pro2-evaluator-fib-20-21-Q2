@@ -11,6 +11,7 @@
 /// \endcond
 #include "Usuari.hh"
 #include "Cjt_cursos.hh"
+#include "Cjt_problemes.hh"
 using namespace std;
 
 /** @class Cjt_usuaris
@@ -56,7 +57,7 @@ class Cjt_usuaris{
         \pre Cert
         \post Realitza un enviament de problema de l'Usuari u
         */
-        void enviament(const string &u, const string &p, const int &r);
+        void enviament(string &user, string &prob, int &r, Cjt_cursos &c, Cjt_problemes& p, Cjt_sesions& q);
 
         //Consultors
         /** @brief Retorna el numero del curs en que està inscrit l'usuari
@@ -94,6 +95,8 @@ class Cjt_usuaris{
         \post Indica si l'usuari està al conjunt
         */
         bool existeix_usuari(const string &u);
+
+        
 
 };
 #endif

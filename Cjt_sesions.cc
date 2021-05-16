@@ -73,5 +73,10 @@ bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
 
 void Cjt_sesions::inscriu_cjt_sesio(const string &s, Usuari &u)
 {
-    u.afegir_enviables(mapa[s].arrel());
+    mapa[s].arrel(u);
+}
+
+void Cjt_sesions::afegeix_fulles_cjt(const string &p, const string &s, Usuari &u)
+{
+    mapa[s].afegeix_fulles(p, u);
 }

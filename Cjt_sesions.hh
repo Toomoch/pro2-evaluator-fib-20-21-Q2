@@ -66,5 +66,7 @@ class Cjt_sesions{
     bool sesio_problema_existeix(const string &p, const string &s);
 
     void inscriu_cjt_sesio(const string &s, Usuari &u);
+
+    void afegeix_fulles_cjt(const string &p, const string &s, Usuari &u);
 };
 #endif

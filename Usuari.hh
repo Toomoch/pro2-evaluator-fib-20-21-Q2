@@ -51,11 +51,11 @@ class Usuari{
         */
         void inscriure_curs(const int &c);
 
-        /** @brief Treu el problema d'enviables 
+        /** @brief Treu el problema d'enviables i l'afegeix a resolts
         \pre Problema existent
-        \post Treu el problema d'enviables
+        \post Treu el problema d'enviables i l'afegeix a resolts
         */
-        void treure_enviable(const string &p);
+        void afegir_resolt(const string &p);
 
         /** @brief Afegeix el problema p als intentats
         \pre p pertany al cjt de problemes
@@ -63,7 +63,19 @@ class Usuari{
         */
         void afegir_intentats(const string &p);
 
+        /** @brief Afegeix el problema p als enviables
+        \pre p pertany al cjt de problemes
+        \post Afegeix el problema p als enviables
+        */
         void afegir_enviables(const string &p);
+
+        /** @brief Incrementa en 1 els intents del problema enviable p
+        \pre p pertany als problemes enviables
+        \post Incrementa en 1 els intents del problema enviable p
+        */
+        void inc_enviable(const string &p);
+
+        void acabar_curs();
 
         //Consultors
         /** @brief Comprova que l'usuari que hagi completat el curs
@@ -102,12 +114,19 @@ class Usuari{
         */
         int resolt();
 
+        /** @brief Retorna el numero de problemes enviables de l'usuari 
+        \pre Cert
+        \post Retorna el numero de problemes enviables de l'usuari 
+        */
+        int enviable();
+
         /** @brief Retorna el numero de problemes intentats de l'usuari 
         \pre Cert
         \post Retorna el numero de problemes intentats de l'usuari 
         */
         int intent();
 
+        bool problema_resolt(const string &p);
         
 
         

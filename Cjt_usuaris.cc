@@ -65,15 +65,15 @@ void Cjt_usuaris::llistar_usuaris()
 {
     for (map <string, Usuari>::iterator it = mapa.begin(); it != mapa.end(); ++it)
     {
-        cout<<(*it).first<<"("<<(*it).second.total()<<","<<(*it).second.intent()<<","<<(*it).second.resolt()<<","<<(*it).second.curs_usuari()<<")"<<endl;
+        cout<<(*it).first<<"("<<(*it).second.total()<<","<<(*it).second.resolt()<<","<<(*it).second.intent()<<","<<(*it).second.curs_usuari()<<")"<<endl;
     }
-    
+
 }
 
 void Cjt_usuaris::llistar_usuari(const string &u)
 {
     
-    cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].intent()<<","<<mapa[u].resolt()<<","<<mapa[u].curs_usuari()<<")"<<endl;
+    cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].resolt()<<","<<mapa[u].intent()<<","<<mapa[u].curs_usuari()<<")"<<endl;
     
 }
 
@@ -83,21 +83,50 @@ void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions 
     C.inscriu_cjt_cursos(c, (*it).second, q);
     mapa[u].inscriure_curs(c);
 }
-/*
-void Cjt_usuaris::enviament(const string &u, const string &p, const int &r) 
+
+void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, Cjt_problemes& p, Cjt_sesions& q) 
 {
-    map <string,Usuari>::iterator it = mapa.find(u);
+    
+    map <string,Usuari>::iterator it = mapa.find(user);
+    it->second.afegir_intentats(prob);
     
     if (r==1) 
-    {
-        (*it).second.treure_enviable(p);
-        int curs = (*it).second.curs_usuari();
-
+    {   
+        int curs = it->second.curs_usuari();
+        //cout<<"abans"<<endl;
+        
+        p.inc_env_exit_cjt(prob);
+        p.inc_env_total_cjt(prob);
+        //it->second.inc_enviable(prob);
+        it->second.afegir_resolt(prob);
+        //escriu_resolts_cjt(user);
+        
+        //escriu_enviables_cjt(user);
+        
+        
+        string ses = c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
+        
+        
+        
+        q.afegeix_fulles_cjt(prob, ses, it->second);
+        
+        
+        
+        if (it->second.enviable() == 0)
+        {
+            it->second.acabar_curs();
+            c.cjt_inc_acabaments(curs);
+            c.dec_inscrits_cjt(curs);
+        }
+        
+        
+        
     }
     else 
     {
+        p.inc_env_total_cjt(prob);
+        
         
     }
-    (*it).second.afegir_intentats(p);
+    
 }
-*/
