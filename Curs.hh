@@ -7,11 +7,11 @@
 /// \cond
 #include <iostream>
 #include <string>
-#include <list>
-#include <set>
+#include <vector>
+#include <map>
 /// \endcond
 
-#include "Cjt_sesions.hh"
+//#include "Cjt_sesions.hh"
 using namespace std;
 
 /** @class Curs
@@ -19,9 +19,10 @@ using namespace std;
 */
 class Curs{
     private:
-        list <string> ses_del_curs;
+        vector <string> ses_del_curs;
         int inscrits;
         int acabaments;
+        map <string,string> ses_prob;
     public:
     //Constructors
     /** @brief Constructor predeterminat
@@ -49,12 +50,16 @@ class Curs{
     */    
     void dec_inscrits();
 
+    bool insertar_prob_ses(const string &p, const string &ses);
+
     //Consultors
     /** @brief Escriu el Curs i les seves característiques
     \pre Cert
     \post Escriu les característiques del curs: nombre d'usuaris que l'han completat, nombre d'inscrits, nombre de sesions i els identificadors d'aquestes
     */
     void escriure_curs();
+
+    int num_sesions();
 
     /** @brief Retorna el nombre d'inscrits en el curs
     \pre Cert
@@ -72,11 +77,15 @@ class Curs{
     \pre Cert
     \post Retorna si el curs té un conflicte de interseccio de problemes
     */
-    bool interseccio(Cjt_sesions &q);
+    //bool interseccio(Cjt_sesions &q);
 
-    string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
+    //string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
 
-    void inscriu_curs(Usuari &u, Cjt_sesions &q);
+    string curs_sesio_problema(const string &p);
+
+    string curs_sesio_iteratiu(const int &i);
+
+    //void inscriu_curs(Usuari &u, Cjt_sesions &q);
 
     void inc_acabaments();
 };

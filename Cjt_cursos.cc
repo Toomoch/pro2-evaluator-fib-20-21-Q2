@@ -4,36 +4,24 @@ Cjt_cursos::Cjt_cursos()
 
 }
 
-void Cjt_cursos::llegeix_cjt_cursos(const int &ncurs)
+void Cjt_cursos::llegeix_cjt_cursos(const int &ncurs, Cjt_sesions &q)
 {
-    
     
     for (int i = 0; i < ncurs; i++)
     {
-        Curs cur;
+        Curs curs;
         int nses;
         cin>>nses;
-        cur.llegir_curs(nses);
-        vec.push_back(cur);
+        curs.llegir_curs(nses);                  
+        q.omplir_mapa_curs(curs, false);    //no mirem interseccio
+        vec.push_back(curs);
     }
     
 }
 
-void Cjt_cursos::afegir_curs_al_cjt(Cjt_sesions &q)
+void Cjt_cursos::afegir_curs_al_cjt(const Curs &c)
 {
-    
-    Curs c;
-    int nses;
-    cin>>nses;
-    c.llegir_curs(nses);
-    if (c.interseccio(q)) cout<<"error: curso mal formado"<<endl;
-    else 
-    {
-        vec.push_back(c);
-        cout<<vec.size()<<endl;
-    }
-    
-
+    vec.push_back(c);
 }
 
 int Cjt_cursos::num_cjt_cursos()
@@ -62,6 +50,12 @@ int Cjt_cursos::num_inscrits_cjt(const int &c)
     return vec[c-1].num_inscrits();
 }
 
+void Cjt_cursos::iguala_curs(const int &c, Curs &curs)
+{
+
+    curs = vec[c-1];
+}
+
 void Cjt_cursos::escriu_cjt_cursos() 
 {
     for (int i = 0; i < vec.size(); ++i)
@@ -79,18 +73,24 @@ void Cjt_cursos::escriu_curs(const int &c)
     
     
 }
-
+/*
 string Cjt_cursos::cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q)
 {
     return vec[c-1].curs_sesio_problema_existeix(p, q);
 
 }
+*/
+string Cjt_cursos::cjt_curs_sesio_problema(const int &c, const string &p)
+{
+    return vec[c-1].curs_sesio_problema(p);
+}
 
+/*
 void Cjt_cursos::inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q)
 {
     vec[c-1].inscriu_curs(u, q);
 }
-
+*/
 void Cjt_cursos::cjt_inc_acabaments(const int &c)
 {
     vec[c-1].inc_acabaments();

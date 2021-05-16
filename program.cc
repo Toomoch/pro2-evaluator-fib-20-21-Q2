@@ -34,7 +34,7 @@ int main ()
     int ncurs;
     cin>>ncurs;
     Cjt_cursos c;
-    c.llegeix_cjt_cursos(ncurs);
+    c.llegeix_cjt_cursos(ncurs, q);
     
     int nuser;
     cin>>nuser;
@@ -71,7 +71,17 @@ int main ()
         else if (comando == "nuevo_curso" or comando == "nc")
         {
             cout<<"#"<<comando<<endl;
-            c.afegir_curs_al_cjt(q);
+            int nses;
+            cin>>nses;
+            Curs curs;
+            curs.llegir_curs(nses);
+            
+            if (q.omplir_mapa_curs(curs, true))
+            {
+                c.afegir_curs_al_cjt(curs);
+                cout<<c.num_cjt_cursos()<<endl;
+            }
+            else cout<<"error: curso mal formado"<<endl;
         }
         
         else if (comando == "alta_usuario" or comando == "a")
@@ -116,6 +126,7 @@ int main ()
                 if (c.existeix_curs(curs))
                 {
                     if (u.curs_inscrit(user) == 0) {
+                        
                         u.cjt_inscriure_curs(curs, user, q, c);
                         cout<<c.num_inscrits_cjt(curs)<<endl;
 
@@ -155,7 +166,7 @@ int main ()
             {
                 if (p.existeix_problema(prob)) 
                 {
-                    string ses = c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
+                    string ses = c.cjt_curs_sesio_problema(curs, prob);
                     if (ses != "-") cout<<ses<<endl;
                     else cout<<"error: el problema no pertenece al curso"<<endl;
 

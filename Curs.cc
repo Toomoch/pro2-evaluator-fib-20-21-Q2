@@ -7,9 +7,10 @@ Curs::Curs()
 
 void Curs::llegir_curs(const int &nses)
 {
-    string sesi;
+    
     for (int i = 0; i < nses; i++)
     {
+        string sesi;
         cin>>sesi;
         ses_del_curs.push_back(sesi);
     }
@@ -17,18 +18,24 @@ void Curs::llegir_curs(const int &nses)
 }
 
 
+
+int Curs::num_sesions()
+{
+    return ses_del_curs.size();
+}
+
 void Curs::escriure_curs()
 {
     
     cout<<num_acabaments()<<" "<<num_inscrits()<<" "<<ses_del_curs.size()<<" "<<"(";
 
-    list <string>::iterator it = ses_del_curs.begin();
-    cout<<(*it);
-    ++it;
-    while (it != ses_del_curs.end())
+    int i = 0;
+    cout<<ses_del_curs[i];
+    ++i;
+    while (i < ses_del_curs.size())
     {
-        cout<<" "<<(*it);
-        ++it;
+        cout<<" "<<ses_del_curs[i];
+        ++i;
     }
 
     cout<<")"<<endl;
@@ -53,6 +60,8 @@ int Curs::num_acabaments()
     return acabaments;
 }
 
+
+/*
 bool Curs::interseccio(Cjt_sesions &q)
 {
     Cjt_ids base;
@@ -79,28 +88,48 @@ bool Curs::interseccio(Cjt_sesions &q)
     }
     return found;
 }
-
+*/
+/*
 string Curs::curs_sesio_problema_existeix(const string &p, Cjt_sesions &q)
 {
     
-    for (list<string>::iterator it = ses_del_curs.begin(); it != ses_del_curs.end(); ++it)
+    for (int i = 0; i < ses_del_curs.size(); ++i)
     {
-        if (q.sesio_problema_existeix(p, (*it))) return (*it);
+        string temp = ses_del_curs[i];
+        if (q.sesio_problema_existeix(p, temp)) return (temp);
     }
     return "-";
 }
+*/
 
+bool Curs::insertar_prob_ses(const string &p, const string &ses)
+{
+    pair <map<string,string>::iterator,bool> parell = ses_prob.insert(make_pair(p, ses));
+    return not parell.second;
+}
 
+string Curs::curs_sesio_problema(const string &p)
+{
+    map <string,string>::iterator it = ses_prob.find(p);
+    if (it != ses_prob.end()) return it->second;
+    else return "-";
+}
+
+string Curs::curs_sesio_iteratiu(const int &i)
+{
+    return ses_del_curs[i];
+}
+/*
 void Curs::inscriu_curs(Usuari &u, Cjt_sesions &q)
 {
-    for (list<string>::iterator it = ses_del_curs.begin(); it != ses_del_curs.end(); ++it)
+    for (int i = 0; i < ses_del_curs.size(); ++i)
     {
-        q.inscriu_cjt_sesio((*it), u);
+        q.inscriu_cjt_sesio(ses_del_curs[i], u);
     }
     ++inscrits;
     
 }
-
+*/
 void Curs::inc_acabaments()
 {
     ++acabaments;

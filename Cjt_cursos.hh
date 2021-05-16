@@ -11,6 +11,7 @@
 #include <string>
 /// \endcond
 #include "Curs.hh"
+#include "Cjt_sesions.hh"
 using namespace std;
 
 /** @class Cjt_cursos
@@ -33,13 +34,13 @@ class Cjt_cursos{
     \pre Nombre de cursos > 0
     \post Llegeix un conjunt de cursos
     */
-    void llegeix_cjt_cursos(const int &ncurs);
+    void llegeix_cjt_cursos(const int &ncurs, Cjt_sesions &q);
 
     /** @brief Afegir un curs al conjunt de cursos
     \pre Nou curs no existent al conjunt
     \post Afegeix el curs donat al conjunt de cursos
     */
-    void afegir_curs_al_cjt(Cjt_sesions &q);
+    void afegir_curs_al_cjt(const Curs &c);
 
     /** @brief Incrementa el nombre d'inscrits del curs donat en 1
     \pre Cert
@@ -59,6 +60,8 @@ class Cjt_cursos{
     \post Escriu els cursos pertanyents al conjunt
     */
     void escriu_cjt_cursos();
+
+    void iguala_curs(const int &c, Curs &curs);
 
     /** @brief Escriu el cursos donat
     \pre Cert
@@ -84,7 +87,9 @@ class Cjt_cursos{
     */
     int num_inscrits_cjt(const int &c);
 
-    string cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
+    //string cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
+
+    string cjt_curs_sesio_problema(const int &c, const string &p);
 
     void inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q);
     

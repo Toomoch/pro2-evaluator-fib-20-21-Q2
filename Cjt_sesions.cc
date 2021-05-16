@@ -51,12 +51,39 @@ bool Cjt_sesions::existeix_sesio(const string &u) {
     else return true;
 }
 
+bool Cjt_sesions::omplir_mapa_curs(Curs &c, const bool mirar_interseccio)
+{
+    int m = c.num_sesions();
+    bool interseccio = true;
+    int i=0;
+    if (mirar_interseccio)
+    {
+        while (i<m and interseccio)
+        {
+            string ses = c.curs_sesio_iteratiu(i);
+            if (mapa[ses].pre_inserta_mapa_curs(ses, c)) interseccio = false;
+            ++i;
+        }
+        
+    }
+    else 
+    {
+         while (i<m)
+        {
+            string ses = c.curs_sesio_iteratiu(i);
+            mapa[ses].pre_inserta_mapa_curs(ses, c);
+            ++i;
+        }
+    }
+    return interseccio;
+}
+/*
 Cjt_ids Cjt_sesions::problemes_cjt_sesio(const string &u)
 {
     return mapa[u].problemes_sesio();
 }
-
-
+*/
+/*
 bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
 {
     //map<string,Sesio>::iterator it = mapa.find
@@ -64,15 +91,16 @@ bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
     
     //while (it != mapa.begin())
     
-    Cjt_ids probl_sesio;
+    //Cjt_ids probl_sesio;
         
-    if (mapa[s].problemes_sesio().existeix(p)) return true;
+    //if (mapa[s].problemes_sesio().existeix(p)) return true;
     
     return false;
 }
-
+*/
 void Cjt_sesions::inscriu_cjt_sesio(const string &s, Usuari &u)
 {
+    //cout<<"inscriu_cjt_sesio"<<endl;
     mapa[s].arrel(u);
 }
 

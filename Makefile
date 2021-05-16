@@ -36,4 +36,4 @@ clean:
 	rm *.tar
 
 tar:
-	tar -cvf practica.tar *.cc Makefile Curs.hh Cjt_cursos.hh Problema.hh Cjt_problemes.hh Sesio.hh Cjt_sesions.hh Usuari.hh Cjt_usuaris.hh Cjt_ids.hh
+	tar -cvf practica.tar *.cc Makefile Curs.hh Cjt_cursos.hh Problema.hh Cjt_problemes.hh Sesio.hh Cjt_sesions.hh Usuari.hh Cjt_usuaris.hh

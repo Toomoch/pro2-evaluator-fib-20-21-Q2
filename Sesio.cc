@@ -18,7 +18,7 @@ void Sesio::preordre_llegir_ses(BinTree <string> &temp)
     cin>>problem;
     if (problem != "0")
     {
-        setprob.insertar(problem);
+        //setprob.insertar(problem);
         BinTree <string> l;
         preordre_llegir_ses(l);
         BinTree <string> r;
@@ -37,10 +37,36 @@ int Sesio::calc_numero_problemes(const BinTree <string> &temp){
     return num;
 }
 
+bool Sesio::pre_inserta_mapa_curs(const string &ses, Curs &c)
+{
+    bool interseccio = false;
+    inserta_mapa_curs(ses, c, tree, interseccio);
+    return interseccio;
+}
+
+void Sesio::inserta_mapa_curs(const string &ses, Curs &c, const BinTree<string> &t, bool &interseccio)
+{
+    if(not t.empty() and not interseccio)
+    {
+            if(c.insertar_prob_ses(t.value(), ses))
+            {
+                interseccio = true;
+            }
+
+            else
+            {
+                inserta_mapa_curs(ses, c, t.right(), interseccio);
+                inserta_mapa_curs(ses, c, t.left(), interseccio);
+            }
+    }
+}
+
+
 void Sesio::arrel(Usuari &u)
 {
     if (u.resolt() == 0)
-    {
+    {   
+        //cout<<"afegir_rec"<<endl;
         u.afegir_enviables(tree.value());
     }
     else
@@ -92,11 +118,12 @@ int Sesio::num_problemes()
 {
     return numprob;
 }
-
+/*
 Cjt_ids Sesio::problemes_sesio()
 {
     return setprob;
 }
+*/
 
 void Sesio::afegeix_fulles(const string &p, Usuari &u)
 {

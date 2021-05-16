@@ -6,11 +6,12 @@
 
 /// \cond
 #include <iostream>
-
+#include <string>
 #include "BinTree.hh"
 /// \endcond
-#include "Cjt_ids.hh"
+//#include "Cjt_ids.hh"
 #include "Usuari.hh"
+#include "Curs.hh"
 using namespace std;
 
 /** @class Sesio
@@ -19,7 +20,7 @@ using namespace std;
 class Sesio{
     private:
         BinTree<string> tree;
-        Cjt_ids setprob;
+        //Cjt_ids setprob;
         int numprob;
     public:
     //Constructors
@@ -54,6 +55,10 @@ class Sesio{
     */
     void escriu_ses();
 
+    bool pre_inserta_mapa_curs(const string &ses, Curs &c);
+
+    void inserta_mapa_curs(const string &ses, Curs &c, const BinTree<string> &t, bool &interseccio);
+
     void preorde_escriure_ses(const BinTree <string> &t);
 
     /** @brief Retorna true si el problema p existeix a la sesió 
@@ -82,7 +87,7 @@ class Sesio{
     \pre Cert
     \post Retorna el conjunt de problemes que conté la sessió
     */
-    Cjt_ids problemes_sesio();
+    //Cjt_ids problemes_sesio();
 
     void afegeix_fulles(const string &p, Usuari &u);
 

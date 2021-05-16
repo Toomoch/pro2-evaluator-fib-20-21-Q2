@@ -61,9 +61,11 @@ class Cjt_sesions{
     */
     bool existeix_sesio(const string &u);
 
-    Cjt_ids problemes_cjt_sesio(const string &u);
+    bool omplir_mapa_curs(Curs &c, const bool mirar_interseccio);
 
-    bool sesio_problema_existeix(const string &p, const string &s);
+    //Cjt_ids problemes_cjt_sesio(const string &u);
+
+    //bool sesio_problema_existeix(const string &p, const string &s);
 
     void inscriu_cjt_sesio(const string &s, Usuari &u);
 

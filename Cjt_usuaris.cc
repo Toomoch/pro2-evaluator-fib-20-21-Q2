@@ -79,9 +79,26 @@ void Cjt_usuaris::llistar_usuari(const string &u)
 
 void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions &q, Cjt_cursos &C)
 {
+    Curs curs;
+    C.iguala_curs(c, curs);
+    int m = curs.num_sesions();
     map<std::string, Usuari>::iterator it = mapa.find(u);
-    C.inscriu_cjt_cursos(c, (*it).second, q);
-    mapa[u].inscriure_curs(c);
+    //cout<<"prefor mida:"<<m<<endl;
+    for (int i = 0; i < m; i++)
+    {
+        //cout<<"for"<<endl;
+        q.inscriu_cjt_sesio(curs.curs_sesio_iteratiu(i), it->second);
+    }
+    
+    if (it->second.enviable() != 0)
+    {
+        //cout<<"inc_ins"<<endl;
+        it->second.inscriure_curs(c);
+        
+        C.inc_inscrits_cjt(c);
+
+    }
+    
 }
 
 void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, Cjt_problemes& p, Cjt_sesions& q) 
@@ -104,7 +121,7 @@ void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, C
         //escriu_enviables_cjt(user);
         
         
-        string ses = c.cjt_cursos_sesio_problema_existeix(curs, prob, q);
+        string ses = c.cjt_curs_sesio_problema(curs, prob);
         
         
         

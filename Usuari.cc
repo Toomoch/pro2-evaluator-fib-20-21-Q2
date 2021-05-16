@@ -95,7 +95,7 @@ void Usuari::afegir_intentats(const string &p)
 
 void Usuari::afegir_enviables(const string &p)
 {
-    //cout<<p<<endl;
+    //cout<<"enviables"<<endl;
     enviables.insert(make_pair(p,0));
 }
 
