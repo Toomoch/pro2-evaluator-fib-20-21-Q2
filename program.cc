@@ -1,6 +1,5 @@
 /** @mainpage
 	En el mòdul program.cc es troba el programa principal de la plataforma Evaluator, una col·lecció de problemes programació.
-
 */
 
 /** @file program.cc
@@ -23,7 +22,6 @@ int main ()
     int nprob;
     cin>>nprob;
     Cjt_problemes p;
-    string temp;
     p.llegir_Cjt_problemes(nprob);
 
     int nsesio;
@@ -76,7 +74,7 @@ int main ()
             Curs curs;
             curs.llegir_curs(nses);
             
-            if (q.omplir_mapa_curs(curs, true))
+            if (q.omplir_sesions_curs(curs, true))
             {
                 c.afegir_curs_al_cjt(curs);
                 cout<<c.num_cjt_cursos()<<endl;
@@ -175,7 +173,6 @@ int main ()
             }
             else cout<<"error: el curso no existe"<<endl;
             
-            
         }
         
         else if (comando == "problemas_resueltos" or comando == "pr")
@@ -190,8 +187,6 @@ int main ()
                 
             }
             else cout<<"error: el usuario no existe"<<endl;
-
-
             
         }
         
@@ -289,14 +284,7 @@ int main ()
             if (u.existeix_usuari(user)) u.llistar_usuari(user);
             else cout<<"error: el usuario no existe"<<endl;
         }
-        /*
-        else if (comando == "test")
-        {
-            int curs;
-            cin>>curs;
-            cout<<c.num_inscrits_cjt(curs);
-        }
-        */
+
         cin>>comando;
     }
 }

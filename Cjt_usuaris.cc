@@ -65,7 +65,7 @@ void Cjt_usuaris::llistar_usuaris()
 {
     for (map <string, Usuari>::iterator it = mapa.begin(); it != mapa.end(); ++it)
     {
-        cout<<(*it).first<<"("<<(*it).second.total()<<","<<(*it).second.resolt()<<","<<(*it).second.intent()<<","<<(*it).second.curs_usuari()<<")"<<endl;
+        cout<<it->first<<"("<<it->second.total()<<","<<it->second.resolt()<<","<<it->second.intent()<<","<<it->second.curs_usuari()<<")"<<endl;
     }
 
 }
@@ -83,16 +83,13 @@ void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions 
     C.iguala_curs(c, curs);
     int m = curs.num_sesions();
     map<std::string, Usuari>::iterator it = mapa.find(u);
-    //cout<<"prefor mida:"<<m<<endl;
     for (int i = 0; i < m; i++)
     {
-        //cout<<"for"<<endl;
         q.inscriu_cjt_sesio(curs.curs_sesio_iteratiu(i), it->second);
     }
     
     if (it->second.enviable() != 0)
     {
-        //cout<<"inc_ins"<<endl;
         it->second.inscriure_curs(c);
         
         C.inc_inscrits_cjt(c);
@@ -110,33 +107,22 @@ void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, C
     if (r==1) 
     {   
         int curs = it->second.curs_usuari();
-        //cout<<"abans"<<endl;
         
         p.inc_env_exit_cjt(prob);
         p.inc_env_total_cjt(prob);
-        //it->second.inc_enviable(prob);
-        it->second.afegir_resolt(prob);
-        //escriu_resolts_cjt(user);
-        
-        //escriu_enviables_cjt(user);
-        
+        it->second.afegir_resolt(prob);        
         
         string ses = c.cjt_curs_sesio_problema(curs, prob);
         
-        
-        
         q.afegeix_fulles_cjt(prob, ses, it->second);
-        
         
         
         if (it->second.enviable() == 0)
         {
             it->second.acabar_curs();
-            c.cjt_inc_acabaments(curs);
+            c.inc_acabaments_cjt(curs);
             c.dec_inscrits_cjt(curs);
         }
-        
-        
         
     }
     else 

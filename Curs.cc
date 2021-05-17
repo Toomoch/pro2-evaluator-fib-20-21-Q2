@@ -1,3 +1,6 @@
+/** @file Curs.cc
+    @brief Implementació de la clase Curs
+*/
 #include "Curs.hh"
 Curs::Curs()
 {
@@ -6,8 +9,7 @@ Curs::Curs()
 }
 
 void Curs::llegir_curs(const int &nses)
-{
-    
+{   
     for (int i = 0; i < nses; i++)
     {
         string sesi;
@@ -17,16 +19,29 @@ void Curs::llegir_curs(const int &nses)
     
 }
 
-
-
-int Curs::num_sesions()
+void Curs::inc_inscrits()
 {
-    return ses_del_curs.size();
+    ++inscrits;
 }
 
-void Curs::escriure_curs()
+void Curs::dec_inscrits()
 {
-    
+    --inscrits;
+}
+
+void Curs::inc_acabaments()
+{
+    ++acabaments;
+}
+
+bool Curs::insertar_prob_ses(const string &p, const string &ses)
+{
+    pair <map<string,string>::iterator,bool> parell = ses_prob.insert(make_pair(p, ses));
+    return not parell.second;
+}
+
+void Curs::escriure_curs() const
+{
     cout<<num_acabaments()<<" "<<num_inscrits()<<" "<<ses_del_curs.size()<<" "<<"(";
 
     int i = 0;
@@ -41,96 +56,30 @@ void Curs::escriure_curs()
     cout<<")"<<endl;
 }
 
-void Curs::inc_inscrits()
+int Curs::num_sesions() const
 {
-    ++inscrits;
+    return ses_del_curs.size();
 }
 
-void Curs::dec_inscrits()
+int Curs::num_inscrits() const
 {
-    --inscrits;
-}
-
-int Curs::num_inscrits(){
     return inscrits;
 }
 
-int Curs::num_acabaments()
+int Curs::num_acabaments() const
 {
     return acabaments;
 }
 
-
-/*
-bool Curs::interseccio(Cjt_sesions &q)
+string Curs::curs_sesio_problema(const string &p) const
 {
-    Cjt_ids base;
-    string nombase;
-
-    list<string>::iterator it = ses_del_curs.begin();
-    base = q.problemes_cjt_sesio((*it));
-    ++it;
-
-    bool found = false;
-
-    while (not found and it!=ses_del_curs.end())    //recorre les sesions
-    {
-        
-        Cjt_ids temp = q.problemes_cjt_sesio((*it));
-        set<string>::iterator it2 = temp.principi();
-
-        while (not found and it2 != temp.final())   //recorre els problemes de cada sesio
-        {
-            found = not base.insertar((*it2));
-            ++it2;
-        }
-        ++it;
-    }
-    return found;
-}
-*/
-/*
-string Curs::curs_sesio_problema_existeix(const string &p, Cjt_sesions &q)
-{
-    
-    for (int i = 0; i < ses_del_curs.size(); ++i)
-    {
-        string temp = ses_del_curs[i];
-        if (q.sesio_problema_existeix(p, temp)) return (temp);
-    }
-    return "-";
-}
-*/
-
-bool Curs::insertar_prob_ses(const string &p, const string &ses)
-{
-    pair <map<string,string>::iterator,bool> parell = ses_prob.insert(make_pair(p, ses));
-    return not parell.second;
-}
-
-string Curs::curs_sesio_problema(const string &p)
-{
-    map <string,string>::iterator it = ses_prob.find(p);
+    map <string,string>::const_iterator it = ses_prob.find(p);
     if (it != ses_prob.end()) return it->second;
     else return "-";
 }
 
-string Curs::curs_sesio_iteratiu(const int &i)
+string Curs::curs_sesio_iteratiu(const int &i) const
 {
     return ses_del_curs[i];
 }
-/*
-void Curs::inscriu_curs(Usuari &u, Cjt_sesions &q)
-{
-    for (int i = 0; i < ses_del_curs.size(); ++i)
-    {
-        q.inscriu_cjt_sesio(ses_del_curs[i], u);
-    }
-    ++inscrits;
-    
-}
-*/
-void Curs::inc_acabaments()
-{
-    ++acabaments;
-}
+

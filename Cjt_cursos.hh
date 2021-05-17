@@ -19,7 +19,8 @@ using namespace std;
 */
 class Cjt_cursos{
     private:
-        vector<Curs> vec;
+        /** @brief Vector on s'emmagatzemen els cursos pertanyents al conjunt */
+        vector<Curs> cursos;
     public:
 
     //Constructors
@@ -43,56 +44,64 @@ class Cjt_cursos{
     void afegir_curs_al_cjt(const Curs &c);
 
     /** @brief Incrementa el nombre d'inscrits del curs donat en 1
-    \pre Cert
+    \pre Curs c existent al conjunt
     \post Incrementa el nombre d'inscrits del curs donat en 1
     */    
     void inc_inscrits_cjt(const int &c);
 
     /** @brief Decrementa el nombre d'inscrits del curs donat en 1
-    \pre Cert
+    \pre Curs c existent al conjunt
     \post Decrementa el nombre d'inscrits del curs donat en 1
     */    
     void dec_inscrits_cjt(const int &c);
+
+    /** @brief Incrementa el nombre d'acabaments del curs donat en 1
+    \pre Curs c existent al conjunt
+    \post Incrementa el nombre de cops que s'ha completat el curs donat en 1
+    */    
+    void inc_acabaments_cjt(const int &c);
 
     //Consultors
     /** @brief Escriu els cursos pertanyents al conjunt
     \pre Cert
     \post Escriu els cursos pertanyents al conjunt
     */
-    void escriu_cjt_cursos();
+    void escriu_cjt_cursos() const;
 
-    void iguala_curs(const int &c, Curs &curs);
-
-    /** @brief Escriu el cursos donat
-    \pre Cert
-    \post Escriu el cursos donat
+    /** @brief Iguala el curs donat amb el que té l'identificador c
+    \pre Curs c existent al conjunt
+    \post Iguala el Curs "curs" amb el del conjunt que té l'identificador c
     */
-    void escriu_curs(const int &u);
+    void iguala_curs(const int &c, Curs &curs) const;
+
+    /** @brief Escriu el curs donat
+    \pre Curs c existent al conjunt
+    \post Escriu el curs c donat del conjunt
+    */
+    void escriu_curs(const int &c) const;
 
     /** @brief Retorna el numero de cursos
     \pre Cert
     \post Retorna el numero de cursos que hi ha al conjunt
     */
-    int num_cjt_cursos();
+    int num_cjt_cursos() const;
 
     /** @brief Indica si el curs està dins del conjunt
     \pre Cert
-    \post Indica si el curs està dins del conjunt
+    \post Retorna true si el curs està dins del conjunt, si no retorna false
     */
-    bool existeix_curs(const int &c);
+    bool existeix_curs(const int &c) const;
     
     /** @brief Retorna el nombre d'inscrits en el curs donat
-    \pre Cert
+    \pre Curs c existent al conjunt
     \post Retorna el nombre d'inscrits en el curs donat
     */
-    int num_inscrits_cjt(const int &c);
+    int num_inscrits_cjt(const int &c) const;
 
-    //string cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q);
-
-    string cjt_curs_sesio_problema(const int &c, const string &p);
-
-    void inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q);
-    
-    void cjt_inc_acabaments(const int &c);
+    /** @brief Retorna la sesió del problema donat en el curs c
+    \pre Curs c existent al conjunt
+    \post Retorna la sesió del problema donat en el curs c i si no existeix retorna "-"
+    */
+    string cjt_curs_sesio_problema(const int &c, const string &p) const;    
 };
 #endif

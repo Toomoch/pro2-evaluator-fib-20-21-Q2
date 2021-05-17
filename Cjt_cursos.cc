@@ -1,3 +1,6 @@
+/** @file Curs.cc
+    @brief Implementació de la clase Curs
+*/
 #include "Cjt_cursos.hh"
 Cjt_cursos::Cjt_cursos()
 {
@@ -13,85 +16,73 @@ void Cjt_cursos::llegeix_cjt_cursos(const int &ncurs, Cjt_sesions &q)
         int nses;
         cin>>nses;
         curs.llegir_curs(nses);                  
-        q.omplir_mapa_curs(curs, false);    //no mirem interseccio
-        vec.push_back(curs);
+        q.omplir_sesions_curs(curs, false);    //no mirem interseccio
+        cursos.push_back(curs);
     }
     
 }
 
 void Cjt_cursos::afegir_curs_al_cjt(const Curs &c)
 {
-    vec.push_back(c);
+    cursos.push_back(c);
 }
 
-int Cjt_cursos::num_cjt_cursos()
+int Cjt_cursos::num_cjt_cursos() const
 {
-    return vec.size();
+    return cursos.size();
 }
 
-bool Cjt_cursos::existeix_curs(const int &c)
+bool Cjt_cursos::existeix_curs(const int &c) const
 {
-    if (c-1 < vec.size()) return true;
+    if (c-1 < cursos.size()) return true;
     else return false;
 }
 
 void Cjt_cursos::inc_inscrits_cjt(const int &c)
 {
-    vec[c-1].inc_inscrits();
+    cursos[c-1].inc_inscrits();
 }
 
 void Cjt_cursos::dec_inscrits_cjt(const int &c)
 {
-    vec[c-1].dec_inscrits();
+    cursos[c-1].dec_inscrits();
 }
 
-int Cjt_cursos::num_inscrits_cjt(const int &c)
+int Cjt_cursos::num_inscrits_cjt(const int &c) const
 {
-    return vec[c-1].num_inscrits();
+    return cursos[c-1].num_inscrits();
 }
 
-void Cjt_cursos::iguala_curs(const int &c, Curs &curs)
+void Cjt_cursos::iguala_curs(const int &c, Curs &curs) const
 {
 
-    curs = vec[c-1];
+    curs = cursos[c-1];
 }
 
-void Cjt_cursos::escriu_cjt_cursos() 
+void Cjt_cursos::escriu_cjt_cursos()  const
 {
-    for (int i = 0; i < vec.size(); ++i)
+    for (int i = 0; i < cursos.size(); ++i)
     {
         cout<<i+1<<" ";
-        vec[i].escriure_curs();
+        cursos[i].escriure_curs();
     }
     
 }
 
-void Cjt_cursos::escriu_curs(const int &c) 
+void Cjt_cursos::escriu_curs(const int &c)  const
 {
     cout<<c<<" ";
-    vec[c-1].escriure_curs();
+    cursos[c-1].escriure_curs();
     
     
 }
-/*
-string Cjt_cursos::cjt_cursos_sesio_problema_existeix(const int &c, const string &p, Cjt_sesions &q)
-{
-    return vec[c-1].curs_sesio_problema_existeix(p, q);
 
-}
-*/
-string Cjt_cursos::cjt_curs_sesio_problema(const int &c, const string &p)
+string Cjt_cursos::cjt_curs_sesio_problema(const int &c, const string &p) const
 {
-    return vec[c-1].curs_sesio_problema(p);
+    return cursos[c-1].curs_sesio_problema(p);
 }
 
-/*
-void Cjt_cursos::inscriu_cjt_cursos(const int &c, Usuari &u, Cjt_sesions &q)
+void Cjt_cursos::inc_acabaments_cjt(const int &c)
 {
-    vec[c-1].inscriu_curs(u, q);
-}
-*/
-void Cjt_cursos::cjt_inc_acabaments(const int &c)
-{
-    vec[c-1].inc_acabaments();
+    cursos[c-1].inc_acabaments();
 }

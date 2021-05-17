@@ -1,3 +1,6 @@
+/** @file Cjt_sesions.cc
+    @brief Implementació de la clase Cjt_sesions
+*/
 #include "Cjt_sesions.hh"
 Cjt_sesions::Cjt_sesions(){
 
@@ -10,7 +13,7 @@ void Cjt_sesions::llegir_cjt_sesions(const int &nsesio) {
         Sesio sesi;
         cin>>identif;
         sesi.llegir_ses();
-        mapa.insert(pair <string, Sesio> (identif, sesi));
+        sesions.insert(pair <string, Sesio> (identif, sesi));
     }
     
 }
@@ -20,91 +23,70 @@ void Cjt_sesions::afegir_sesio(const string &identif)
 {
     Sesio sesi;
     sesi.llegir_ses();
-    mapa.insert(pair <string, Sesio> (identif, sesi));
-    cout<<mapa.size()<<endl;
+    sesions.insert(pair <string, Sesio> (identif, sesi));
+    cout<<sesions.size()<<endl;
 }
 
 
-void Cjt_sesions::escriure_cjt_sesio()
+void Cjt_sesions::escriure_cjt_sesio() const
 {
-    for (map<string, Sesio>::iterator it = mapa.begin(); it != mapa.end(); ++it)
+    for (map<string, Sesio>::const_iterator it = sesions.begin(); it != sesions.end(); ++it)
     {
-        cout<<(*it).first<<" "<<(*it).second.num_problemes()<<" ";
-        (*it).second.escriu_ses();
+        cout<<it->first<<" "<<it->second.num_problemes()<<" ";
+        it->second.escriu_ses();
     }
     
 }
 
-void Cjt_sesions::escriure_sesio(const string &s)
+void Cjt_sesions::escriure_sesio(const string &s) const
 {
-    
-        cout<<s<<" "<<mapa[s].num_problemes()<<" ";
-        mapa[s].escriu_ses();
+    map<string, Sesio>::const_iterator it = sesions.find(s);
+    cout<<s<<" "<<it->second.num_problemes()<<" ";
+    it->second.escriu_ses();
     
     
 }
 
-bool Cjt_sesions::existeix_sesio(const string &u) {
-    map<string, Sesio>::iterator it;
-    it = mapa.find(u);
-    if (it == mapa.end()) return false;
+bool Cjt_sesions::existeix_sesio(const string &s) const
+{
+    map<string, Sesio>::const_iterator it = sesions.find(s);
+    if (it == sesions.end()) return false;
     else return true;
 }
 
-bool Cjt_sesions::omplir_mapa_curs(Curs &c, const bool mirar_interseccio)
+bool Cjt_sesions::omplir_sesions_curs(Curs &c, const bool mirar_interseccio)
 {
     int m = c.num_sesions();
     bool interseccio = true;
-    int i=0;
+    int i = 0;
     if (mirar_interseccio)
     {
-        while (i<m and interseccio)
+        while (i < m and interseccio)
         {
             string ses = c.curs_sesio_iteratiu(i);
-            if (mapa[ses].pre_inserta_mapa_curs(ses, c)) interseccio = false;
+            if (sesions[ses].pre_inserta_mapa_curs(ses, c)) interseccio = false;
             ++i;
         }
         
     }
     else 
     {
-         while (i<m)
+         while (i < m)
         {
             string ses = c.curs_sesio_iteratiu(i);
-            mapa[ses].pre_inserta_mapa_curs(ses, c);
+            sesions[ses].pre_inserta_mapa_curs(ses, c);
             ++i;
         }
     }
     return interseccio;
 }
-/*
-Cjt_ids Cjt_sesions::problemes_cjt_sesio(const string &u)
-{
-    return mapa[u].problemes_sesio();
-}
-*/
-/*
-bool Cjt_sesions::sesio_problema_existeix(const string &p, const string &s)
-{
-    //map<string,Sesio>::iterator it = mapa.find
-    
-    
-    //while (it != mapa.begin())
-    
-    //Cjt_ids probl_sesio;
-        
-    //if (mapa[s].problemes_sesio().existeix(p)) return true;
-    
-    return false;
-}
-*/
+
 void Cjt_sesions::inscriu_cjt_sesio(const string &s, Usuari &u)
 {
-    //cout<<"inscriu_cjt_sesio"<<endl;
-    mapa[s].arrel(u);
+    sesions[s].arrel(u);
 }
 
 void Cjt_sesions::afegeix_fulles_cjt(const string &p, const string &s, Usuari &u)
 {
-    mapa[s].afegeix_fulles(p, u);
+    sesions[s].afegeix_fulles(p, u);
 }

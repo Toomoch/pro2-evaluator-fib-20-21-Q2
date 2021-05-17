@@ -1,3 +1,6 @@
+/** @file Cjt_sesions.cc
+    @brief Implementació de la clase Cjt_sesions
+*/
 #include "Sesio.hh"
 Sesio::Sesio()
 {
@@ -18,7 +21,6 @@ void Sesio::preordre_llegir_ses(BinTree <string> &temp)
     cin>>problem;
     if (problem != "0")
     {
-        //setprob.insertar(problem);
         BinTree <string> l;
         preordre_llegir_ses(l);
         BinTree <string> r;
@@ -66,7 +68,6 @@ void Sesio::arrel(Usuari &u)
 {
     if (u.resolt() == 0)
     {   
-        //cout<<"afegir_rec"<<endl;
         u.afegir_enviables(tree.value());
     }
     else
@@ -94,13 +95,13 @@ void Sesio::afegir_problemes_tree(const BinTree<string>& t, Usuari& u)
     }
 }
 
-void Sesio::escriu_ses()
+void Sesio::escriu_ses() const
 {
     preorde_escriure_ses(tree);
     cout<<endl;
 }
 
-void Sesio::preorde_escriure_ses(const BinTree <string> &t)
+void Sesio::preorde_escriure_ses(const BinTree <string> &t) const
 {
     if (not t.empty())
     {
@@ -114,16 +115,10 @@ void Sesio::preorde_escriure_ses(const BinTree <string> &t)
 
 }
 
-int Sesio::num_problemes()
+int Sesio::num_problemes() const
 {
     return numprob;
 }
-/*
-Cjt_ids Sesio::problemes_sesio()
-{
-    return setprob;
-}
-*/
 
 void Sesio::afegeix_fulles(const string &p, Usuari &u)
 {

@@ -21,8 +21,14 @@ using namespace std;
 class Cjt_problemes {
 
 private:
-    map <string, Problema> mapa;
 
+    /** @brief Mapa on s'emmagatzemen els problemes pertanyents al conjunt amb el seu identificador */
+    map <string, Problema> problemes;
+
+    /** @brief Retorna true si l'element a va abans que el b
+    \pre Cert
+    \post Retorna true si l'element a va abans que el b en l'ordre, es mira primer per ratio i despres per l'identificador
+    */
     static bool cmp(const pair<string,Problema>& a, const pair<string,Problema>& b);
 
 public:
@@ -60,14 +66,14 @@ public:
     void inc_env_exit_cjt(const string &p);
 
     //Consultor
-    /** @brief Escriu el Conjunt de problemes
+    /** @brief Escriu el Conjunt de problemes ordenadament
     \pre Cert
-    \post Escriu el Conjunt de problemes
+    \post Escriu el Conjunt de problemes ordenats per ratio i en cas d'empat per l'identificador
     */
-    void escriure_cjt_problemes();
+    void escriure_cjt_problemes() const;
 
     /** @brief Escriu el problema del Conjunt
-    \pre Cert
+    \pre Problema p existent al conjunt
     \post Escriu el problema del Conjunt
     */
     void escriure_problema(const string &p);
@@ -76,7 +82,7 @@ public:
     \pre Cert
     \post Indica si el problema p existeix al conjunt
     */
-    bool existeix_problema(const string &p);
+    bool existeix_problema(const string &p) const;
 
 };
 

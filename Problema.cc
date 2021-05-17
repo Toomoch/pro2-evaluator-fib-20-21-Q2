@@ -1,3 +1,6 @@
+/** @file Problema.cc
+    @brief Implementació de la clase Problema
+*/
 #include "Problema.hh"
 Problema::Problema(){
     total=0;

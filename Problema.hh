@@ -16,7 +16,10 @@ using namespace std;
 class Problema {
 
 private:
+    /** @brief Enter on s'emmagatzema els cops que el problema s'ha intentat resoldre */
     int total;
+
+    /** @brief Enter on s'emmagatzema els cops que el problema s'ha resolt */
     int exit;
 public:
 

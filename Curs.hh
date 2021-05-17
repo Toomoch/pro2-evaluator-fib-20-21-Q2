@@ -11,7 +11,6 @@
 #include <map>
 /// \endcond
 
-//#include "Cjt_sesions.hh"
 using namespace std;
 
 /** @class Curs
@@ -19,11 +18,19 @@ using namespace std;
 */
 class Curs{
     private:
+        /** @brief Vector on s'emmagatzemen les sesions que pertanyen al curs */
         vector <string> ses_del_curs;
+
+        /** @brief Enter on s'emmagatzema el numero d'inscrits */
         int inscrits;
+
+        /** @brief Enter on s'emmagatzema el numero de cops que s'ha acabat el curs */
         int acabaments;
+
+        /** @brief Mapa on s'emmagatzemen tots els problemes pertanyents al curs amb la seva sesio respectiva */
         map <string,string> ses_prob;
     public:
+
     //Constructors
     /** @brief Constructor predeterminat
     \pre Cert
@@ -50,6 +57,16 @@ class Curs{
     */    
     void dec_inscrits();
 
+    /** @brief Incrementa el nombre d'acabaments en 1
+    \pre Cert
+    \post Incrementa el nombre de cops que s'ha completat el curs en 1
+    */    
+    void inc_acabaments();
+
+    /** @brief Afegeix al contenidor el problema p i la sesió ses
+    \pre Cert
+    \post Afegeix al contenidor el parell format per l'identificador de un problema p i l'identificador de una sesió ses
+    */ 
     bool insertar_prob_ses(const string &p, const string &ses);
 
     //Consultors
@@ -57,37 +74,38 @@ class Curs{
     \pre Cert
     \post Escriu les característiques del curs: nombre d'usuaris que l'han completat, nombre d'inscrits, nombre de sesions i els identificadors d'aquestes
     */
-    void escriure_curs();
+    void escriure_curs() const;
 
-    int num_sesions();
+    /** @brief Retorna el nombre de sesions del curs
+    \pre Cert
+    \post Retorna el nombre de sesions que hi ha al curs
+    */
+    int num_sesions() const;
 
     /** @brief Retorna el nombre d'inscrits en el curs
     \pre Cert
-    \post Retorna el nombre d'inscrits en el curs
+    \post Retorna el nombre d'inscrits que hi ha al curs
     */
-    int num_inscrits();
+    int num_inscrits() const;
 
-    /** @brief Retorna el nombre de cops que s'ha completat el curs
+    /** @brief Retorna el nombre d'acabaments del curs
     \pre Cert
-    \post Retorna el nombre de cops que s'ha completat el curs
+    \post Retorna les vegades que s'ha completat el curs
     */
-    int num_acabaments();
+    int num_acabaments() const;
 
-    /** @brief Serà true si el curs té un conflicte de interseccio de problemes
+    /** @brief Retorna la sesió del problema donat
     \pre Cert
-    \post Retorna si el curs té un conflicte de interseccio de problemes
+    \post Retorna la sesió del problema donat i si no existeix retorna "-"
     */
-    //bool interseccio(Cjt_sesions &q);
+    string curs_sesio_problema(const string &p) const;
 
-    //string curs_sesio_problema_existeix(const string &p, Cjt_sesions &q);
+    /** @brief Retorna la sesió que està a la posició i
+    \pre 0<=i<nombre de sesions
+    \post Retorna la sesió que està a la posició i del contenidor
+    */
+    string curs_sesio_iteratiu(const int &i) const;
 
-    string curs_sesio_problema(const string &p);
-
-    string curs_sesio_iteratiu(const int &i);
-
-    //void inscriu_curs(Usuari &u, Cjt_sesions &q);
-
-    void inc_acabaments();
 };
 
 #endif

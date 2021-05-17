@@ -1,41 +1,41 @@
+/** @file Cjt_problemes.cc
+    @brief Implementació de la clase Cjt_problemes
+*/
 #include "Cjt_problemes.hh"
 Cjt_problemes::Cjt_problemes(){}
 
 void Cjt_problemes::afegeix_Cjt_problemes(const string &prob) {
 
     Problema p;
-    int oldsize = mapa.size();
-    //pair< map<string, Problema>::iterator,bool> valor;
-    //valor = mapa.insert(pair<string,Problema> (prob,p));
-    mapa.insert(pair<string,Problema> (prob,p));
-    int newsize = mapa.size();
-    if (oldsize!=newsize) cout<<newsize<<endl;
+    int oldsize = problemes.size();
+    problemes.insert(pair<string,Problema> (prob,p));
+    int newsize = problemes.size();
+    if (oldsize != newsize) cout<<newsize<<endl;
     else cout<<"error: el problema ya existe"<<endl;
 }
 
 void Cjt_problemes::llegir_Cjt_problemes(const int &np)
 {
-    
     string s;
     for (int i = 0; i < np; i++)
     {
         Problema p;
         cin>>s;
-        mapa.insert(pair <string, Problema> (s,p));
+        problemes.insert(pair <string, Problema> (s,p));
     }
     
 }
 
-bool Cjt_problemes::existeix_problema(const string &p)
+bool Cjt_problemes::existeix_problema(const string &p) const
 {
-    if (mapa.find(p) == mapa.end()) return false;
+    if (problemes.find(p) == problemes.end()) return false;
     else return true; 
 }
 
-void Cjt_problemes::escriure_cjt_problemes()
+void Cjt_problemes::escriure_cjt_problemes() const
 {
     vector<pair<string, Problema>> ordenat;
-    for (map <string, Problema>::iterator it = mapa.begin(); it != mapa.end(); ++it)
+    for (map <string, Problema>::const_iterator it = problemes.begin(); it != problemes.end(); ++it)
     {
         ordenat.push_back(*it);
     }
@@ -53,8 +53,8 @@ void Cjt_problemes::escriure_cjt_problemes()
 
 void Cjt_problemes::escriure_problema(const string &p)
 {
-    int t = mapa[p].env_totals();
-    int e = mapa[p].env_exit();
+    int t = problemes[p].env_totals();
+    int e = problemes[p].env_exit();
         
     cout<<p<<"("<<t<<","<<e<<","<<double((t+1))/(e+1)<<")"<<endl;
     
@@ -83,10 +83,10 @@ bool Cjt_problemes::cmp(const pair<string,Problema>& a, const pair<string,Proble
 
 void Cjt_problemes::inc_env_total_cjt(const string &p)
 {
-    mapa[p].inc_env_total();
+    problemes[p].inc_env_total();
 }
 
 void Cjt_problemes::inc_env_exit_cjt(const string &p)
 {
-    mapa[p].inc_env_exit();
+    problemes[p].inc_env_exit();
 }

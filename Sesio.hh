@@ -20,7 +20,6 @@ using namespace std;
 class Sesio{
     private:
         BinTree<string> tree;
-        //Cjt_ids setprob;
         int numprob;
     public:
     //Constructors
@@ -41,7 +40,7 @@ class Sesio{
     \pre Existeix la sessió i no és buida
     \post Retorna el numero problemes que té la sessió
     */
-    int num_problemes();
+    int num_problemes() const;
 
     /** @brief Retorna el problema arrel de la sesió
     \pre Existeix la sessió i no és buida
@@ -53,13 +52,13 @@ class Sesio{
     \pre Cert
     \post Escriu els problemes de la sesió
     */
-    void escriu_ses();
+    void escriu_ses() const;
 
     bool pre_inserta_mapa_curs(const string &ses, Curs &c);
 
     void inserta_mapa_curs(const string &ses, Curs &c, const BinTree<string> &t, bool &interseccio);
 
-    void preorde_escriure_ses(const BinTree <string> &t);
+    void preorde_escriure_ses(const BinTree <string> &t) const;
 
     /** @brief Retorna true si el problema p existeix a la sesió 
     \pre Cert
@@ -87,7 +86,7 @@ class Sesio{
     \pre Cert
     \post Retorna el conjunt de problemes que conté la sessió
     */
-    //Cjt_ids problemes_sesio();
+    
 
     void afegeix_fulles(const string &p, Usuari &u);
 
