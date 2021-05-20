@@ -1,3 +1,6 @@
+/** @file Usuari.cc
+    @brief Implementació de la clase Usuari
+*/
 #include "Usuari.hh"
 Usuari::Usuari()
 {

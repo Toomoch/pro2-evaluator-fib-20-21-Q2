@@ -19,10 +19,18 @@ using namespace std;
 */
 class Usuari{
     private:
+        /** @brief Enter on s'emmagatzema el curs on està inscrit */
         int inscrit;
+        /** @brief Enter on s'emmagatzema quants enviaments ha fet */
         int env;
+
+        /** @brief Mapa on s'emmagatzemen tots els problemes que ha resolt l'Usuari i els seus intents*/
         map <string, int> resolts;
+
+        /** @brief Mapa on s'emmagatzemen tots els problemes que pot resoldre l'Usuari i els seus intents*/
         map <string, int> enviables;
+
+        /** @brief Set on s'emmagatzemen tots els problemes que ha enviat l'Usuari */
         set <string> intentats;
     public:
         //Constructors
@@ -32,27 +40,15 @@ class Usuari{
         */
         Usuari();
 
-        /** @brief Crea un Usuari amb curs = nc
-        \pre nc >=0
-        \post Crea un Usuari amb curs = nc 
-        */
-        Usuari(const int &nc);
-
         //Modificadors     
-        /** @brief Canvia el curs de l'usuari per nc
-        \pre nc > 0 
-        \post curs = nc
-        */
-        void modificar_curs(const int &nc);
-
         /** @brief Inscriu l'usuari al curs c
         \pre Curs vàlid
-        \post Inscriu l'usuari al curs c
+        \post Inscriu l'usuari al curs c 
         */
         void inscriure_curs(const int &c);
 
         /** @brief Treu el problema d'enviables i l'afegeix a resolts
-        \pre Problema existent
+        \pre p pertany al cjt de problemes
         \post Treu el problema d'enviables i l'afegeix a resolts
         */
         void afegir_resolt(const string &p);
@@ -75,6 +71,10 @@ class Usuari{
         */
         void inc_enviable(const string &p);
 
+        /** @brief L'usuari es dona de baixa del curs on està inscrit
+        \pre Cert
+        \post L'usuari es dona de baixa del curs on està inscrit
+        */
         void acabar_curs();
 
         //Consultors
@@ -126,6 +126,10 @@ class Usuari{
         */
         int intent();
 
+        /** @brief Retorna true si l'Usuari ha resolt el problema p
+        \pre p pertany al cjt de problemes
+        \post Retorna true si l'Usuari ha resolt el problema p i si no false
+        */
         bool problema_resolt(const string &p);
         
 

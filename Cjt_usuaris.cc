@@ -1,3 +1,6 @@
+/** @file Cjt_usuaris.cc
+    @brief Implementació de la clase Cjt_usuaris
+*/
 #include "Cjt_usuaris.hh"
 Cjt_usuaris::Cjt_usuaris()
 {
@@ -103,18 +106,18 @@ void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, C
     
     map <string,Usuari>::iterator it = mapa.find(user);
     it->second.afegir_intentats(prob);
-    
+    p.inc_env_total_cjt(prob);
     if (r==1) 
     {   
         int curs = it->second.curs_usuari();
         
         p.inc_env_exit_cjt(prob);
-        p.inc_env_total_cjt(prob);
+       
         it->second.afegir_resolt(prob);        
         
         string ses = c.cjt_curs_sesio_problema(curs, prob);
         
-        q.afegeix_fulles_cjt(prob, ses, it->second);
+        q.troba_fulles_afegeix_cjt(prob, ses, it->second);
         
         
         if (it->second.enviable() == 0)
@@ -125,11 +128,6 @@ void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, C
         }
         
     }
-    else 
-    {
-        p.inc_env_total_cjt(prob);
-        
-        
-    }
+    
     
 }

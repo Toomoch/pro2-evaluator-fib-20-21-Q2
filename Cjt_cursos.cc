@@ -1,5 +1,5 @@
-/** @file Curs.cc
-    @brief Implementació de la clase Curs
+/** @file Cjt_cursos.cc
+    @brief Implementació de la clase Cjt_cursos
 */
 #include "Cjt_cursos.hh"
 Cjt_cursos::Cjt_cursos()

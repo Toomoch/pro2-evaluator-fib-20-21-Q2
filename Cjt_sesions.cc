@@ -64,7 +64,7 @@ bool Cjt_sesions::omplir_sesions_curs(Curs &c, const bool mirar_interseccio)
         while (i < m and interseccio)
         {
             string ses = c.curs_sesio_iteratiu(i);
-            if (sesions[ses].pre_inserta_mapa_curs(ses, c)) interseccio = false;
+            if (sesions[ses].inters_pre_inserta_contenidor_curs(ses, c)) interseccio = false;
             ++i;
         }
         
@@ -74,7 +74,7 @@ bool Cjt_sesions::omplir_sesions_curs(Curs &c, const bool mirar_interseccio)
          while (i < m)
         {
             string ses = c.curs_sesio_iteratiu(i);
-            sesions[ses].pre_inserta_mapa_curs(ses, c);
+            sesions[ses].inters_pre_inserta_contenidor_curs(ses, c);
             ++i;
         }
     }
@@ -86,7 +86,7 @@ void Cjt_sesions::inscriu_cjt_sesio(const string &s, Usuari &u)
     sesions[s].arrel(u);
 }
 
-void Cjt_sesions::afegeix_fulles_cjt(const string &p, const string &s, Usuari &u)
+void Cjt_sesions::troba_fulles_afegeix_cjt(const string &p, const string &s, Usuari &u)
 {
-    sesions[s].afegeix_fulles(p, u);
+    sesions[s].pre_troba_afegeix_fulles(p, u);
 }

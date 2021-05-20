@@ -1,9 +1,9 @@
 /** @mainpage
-	En el mòdul program.cc es troba el programa principal de la plataforma Evaluator, una col·lecció de problemes programació.
+	Pràctica evaluator FIB 2020 d'Arnau Valls Fusté
 */
 
 /** @file program.cc
-    @brief Programa principal
+    @brief En el mòdul program.cc es troba el programa principal de la plataforma Evaluator, una col·lecció de problemes programació.
     
     <em>Evaluator d'Usuaris</em>.
 */

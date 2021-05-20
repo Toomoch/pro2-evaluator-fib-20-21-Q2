@@ -59,7 +59,7 @@ class Cjt_sesions{
     \pre Sesio i problema existents als seus conjunts
     \post Afegeix les fulles dels problemes de la sesio s als enviables de l'Usuari u
     */
-    void afegeix_fulles_cjt(const string &p, const string &s, Usuari &u);
+    void troba_fulles_afegeix_cjt(const string &p, const string &s, Usuari &u);
 
     //Consultors
     /** @brief Escriu el conjunt de sesions

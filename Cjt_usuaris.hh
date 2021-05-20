@@ -19,6 +19,7 @@ using namespace std;
 */
 class Cjt_usuaris{
     private:
+        /** @brief Mapa on s'emmagatzemen els Usuaris pertanyents al conjunt amb el seu identificador */
         map <string, Usuari> mapa;
     public:
         //Constructors
@@ -36,44 +37,44 @@ class Cjt_usuaris{
         void afegir_usuari(const string &u);
         
         /** @brief Elimina l'usuari del Cjt d'usuaris amb id = eu
-        \pre Cert
+        \pre Usuari existent al conjunt
         \post Elimina l'usuari de la llista d'usuaris amb id = eu
         */
         void eliminar_usuari(const string &u);
         
         /** @brief Omple el conjunt d'usuaris 
-        \pre Cert
-        \post Conjunt d'Usuaris omplert amb els Usuaris donats
+        \pre nu > 0
+        \post Conjunt d'Usuaris omplert amb tants Usuaris com donats
         */
         void llegir_usuaris(const int &nu);
 
         /** @brief Inscriu l'usuari u al curs c
-        \pre Usuari existent
+        \pre Usuari existent al conjunt i curs existent al conjunt de cursos
         \post Inscriu l'usuari u al curs c
         */
         void cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions &q, Cjt_cursos &C);
         
         /** @brief Realitza un enviament de problema de l'Usuari u
-        \pre Cert
+        \pre Usuari existent al conjunt, curs existent al conjunt de cursos i problema existent en el curso donat
         \post Realitza un enviament de problema de l'Usuari u
         */
         void enviament(string &user, string &prob, int &r, Cjt_cursos &c, Cjt_problemes& p, Cjt_sesions& q);
 
         //Consultors
         /** @brief Retorna el numero del curs en que està inscrit l'usuari
-        \pre Usuari existent
+        \pre Usuari existent al conjunt
         \post Retorna el numero del curs en que està inscrit l'usuari (en cas contrari retorna 0)
         */
         int curs_inscrit(const string &u);
 
         /** @brief Escriu els problemes resolts del Usuari
-        \pre Cert
+        \pre Cert Usuari existent al conjunt
         \post Escriu els problemes resolts del Usuari
         */
         void escriu_resolts_cjt(const string &u);
 
         /** @brief Escriu els problemes enviables del Usuari
-        \pre Cert
+        \pre Cert Usuari existent al conjunt
         \post Escriu els problemes enviables del Usuari
         */
         void escriu_enviables_cjt(const string &u);
@@ -85,7 +86,7 @@ class Cjt_usuaris{
         void llistar_usuaris();
 
         /** @brief Escriu l'Usuari u pertanyent al conjunt
-        \pre Cert
+        \pre Usuari existent al conjunt
         \post Escriu l'Usuari u del conjunt amb els seus enviaments respectius
         */
         void llistar_usuari(const string &u);

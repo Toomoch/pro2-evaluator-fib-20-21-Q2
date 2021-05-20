@@ -1,5 +1,5 @@
-/** @file Cjt_sesions.cc
-    @brief Implementació de la clase Cjt_sesions
+/** @file Sesio.cc
+    @brief Implementació de la clase Sesio
 */
 #include "Sesio.hh"
 Sesio::Sesio()
@@ -39,14 +39,14 @@ int Sesio::calc_numero_problemes(const BinTree <string> &temp){
     return num;
 }
 
-bool Sesio::pre_inserta_mapa_curs(const string &ses, Curs &c)
+bool Sesio::inters_pre_inserta_contenidor_curs(const string &ses, Curs &c)
 {
     bool interseccio = false;
-    inserta_mapa_curs(ses, c, tree, interseccio);
+    inserta_contenidor_curs(ses, c, tree, interseccio);
     return interseccio;
 }
 
-void Sesio::inserta_mapa_curs(const string &ses, Curs &c, const BinTree<string> &t, bool &interseccio)
+void Sesio::inserta_contenidor_curs(const string &ses, Curs &c, const BinTree<string> &t, bool &interseccio)
 {
     if(not t.empty() and not interseccio)
     {
@@ -57,8 +57,8 @@ void Sesio::inserta_mapa_curs(const string &ses, Curs &c, const BinTree<string> 
 
             else
             {
-                inserta_mapa_curs(ses, c, t.right(), interseccio);
-                inserta_mapa_curs(ses, c, t.left(), interseccio);
+                inserta_contenidor_curs(ses, c, t.right(), interseccio);
+                inserta_contenidor_curs(ses, c, t.left(), interseccio);
             }
     }
 }
@@ -72,13 +72,13 @@ void Sesio::arrel(Usuari &u)
     }
     else
     {
-        afegir_problemes_tree(tree, u);
+        afegir_problemes_usuari_tree(tree, u);
     }
     
 }
 
 
-void Sesio::afegir_problemes_tree(const BinTree<string>& t, Usuari& u)
+void Sesio::afegir_problemes_usuari_tree(const BinTree<string>& t, Usuari& u)
 {
 
     if (not t.empty())
@@ -89,25 +89,25 @@ void Sesio::afegir_problemes_tree(const BinTree<string>& t, Usuari& u)
         }
         else
         {
-            if (not t.right().empty()) afegir_problemes_tree(t.right(),u);
-            if (not t.left().empty()) afegir_problemes_tree(t.left(),u);
+            if (not t.right().empty()) afegir_problemes_usuari_tree(t.right(),u);
+            if (not t.left().empty()) afegir_problemes_usuari_tree(t.left(),u);
         }
     }
 }
 
 void Sesio::escriu_ses() const
 {
-    preorde_escriure_ses(tree);
+    post_escriure_ses(tree);
     cout<<endl;
 }
 
-void Sesio::preorde_escriure_ses(const BinTree <string> &t) const
+void Sesio::post_escriure_ses(const BinTree <string> &t)
 {
     if (not t.empty())
     {
         cout<<"(";
-        preorde_escriure_ses(t.left());
-        preorde_escriure_ses(t.right());
+        post_escriure_ses(t.left());
+        post_escriure_ses(t.right());
         cout<<t.value();
         cout<<")";
 
@@ -120,20 +120,20 @@ int Sesio::num_problemes() const
     return numprob;
 }
 
-void Sesio::afegeix_fulles(const string &p, Usuari &u)
+void Sesio::pre_troba_afegeix_fulles(const string &p, Usuari &u)
 {
-    buscar_arbre(tree, p, u);
+    troba_afegeix_fulles_arbre(tree, p, u);
 }
 
-void Sesio::buscar_arbre(const BinTree<string> &t, const string &p, Usuari &u)
+void Sesio::troba_afegeix_fulles_arbre(const BinTree<string> &t, const string &p, Usuari &u)
 {
     if (not t.empty())
     {
         if (t.value() == p) afegir_enviable(t, u);
         else 
         {
-            buscar_arbre(t.left(), p, u);
-            buscar_arbre(t.right(), p, u);
+            troba_afegeix_fulles_arbre(t.left(), p, u);
+            troba_afegeix_fulles_arbre(t.right(), p, u);
         }
     }
 }
