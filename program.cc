@@ -285,6 +285,25 @@ int main ()
             else cout<<"error: el usuario no existe"<<endl;
         }
 
+        else if (comando == "acabar_curso" or comando == "ac")
+        {
+            string user;
+            cin>>user;
+            cout<<"#"<<comando<<" "<<user<<endl;
+            if (u.existeix_usuari(user))
+            {
+                int curs_user = u.curs_inscrit(user);
+                if (curs_user != 0)
+                {
+                    u.acabar_curs_cjt(user);
+                    c.dec_inscrits_cjt(curs_user);
+                    cout<<c.num_inscrits_cjt(curs_user)<<endl;
+                }
+                else cout<<"error: usuario no inscrito en ningun curso"<<endl;
+            }
+            else cout<<"error: el usuario no existe"<<endl;
+        }
+
         cin>>comando;
     }
 }

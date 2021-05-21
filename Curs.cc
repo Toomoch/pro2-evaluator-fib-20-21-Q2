@@ -42,7 +42,7 @@ bool Curs::insertar_prob_ses(const string &p, const string &ses)
 
 void Curs::escriure_curs() const
 {
-    cout<<num_acabaments()<<" "<<num_inscrits()<<" "<<ses_del_curs.size()<<" "<<"(";
+    cout<<num_inscrits()<<" "<<ses_del_curs.size()<<" "<<"(";
 
     int i = 0;
     cout<<ses_del_curs[i];

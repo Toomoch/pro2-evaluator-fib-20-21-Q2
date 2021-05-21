@@ -3,6 +3,9 @@
 *.tar
 *.zip
 *.txt
+*.pdf
+*.cor
+*.inp
 /html
 /latex
 /.vscode

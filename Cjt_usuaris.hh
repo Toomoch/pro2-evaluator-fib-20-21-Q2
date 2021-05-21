@@ -60,6 +60,8 @@ class Cjt_usuaris{
         */
         void enviament(string &user, string &prob, int &r, Cjt_cursos &c, Cjt_problemes& p, Cjt_sesions& q);
 
+        void acabar_curs_cjt(const string &user);
+
         //Consultors
         /** @brief Retorna el numero del curs en que està inscrit l'usuari
         \pre Usuari existent al conjunt

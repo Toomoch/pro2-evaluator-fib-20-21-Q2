@@ -88,7 +88,8 @@ void Sesio::afegir_problemes_usuari_tree(const BinTree<string>& t, Usuari& u)
             u.afegir_enviables(t.value());
         }
         else
-        {
+        {   
+            u.afegir_enviables(t.value());
             if (not t.right().empty()) afegir_problemes_usuari_tree(t.right(),u);
             if (not t.left().empty()) afegir_problemes_usuari_tree(t.left(),u);
         }

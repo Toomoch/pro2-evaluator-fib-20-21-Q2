@@ -68,7 +68,7 @@ void Cjt_usuaris::llistar_usuaris()
 {
     for (map <string, Usuari>::iterator it = mapa.begin(); it != mapa.end(); ++it)
     {
-        cout<<it->first<<"("<<it->second.total()<<","<<it->second.resolt()<<","<<it->second.intent()<<","<<it->second.curs_usuari()<<")"<<endl;
+        cout<<it->first<<"("<<it->second.total()<<","<<it->second.resolt()<<","<<it->second.curs_usuari()<<")"<<endl;
     }
 
 }
@@ -76,7 +76,7 @@ void Cjt_usuaris::llistar_usuaris()
 void Cjt_usuaris::llistar_usuari(const string &u)
 {
     
-    cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].resolt()<<","<<mapa[u].intent()<<","<<mapa[u].curs_usuari()<<")"<<endl;
+    cout<<u<<"("<<mapa[u].total()<<","<<mapa[u].resolt()<<","<<mapa[u].curs_usuari()<<")"<<endl;
     
 }
 
@@ -93,6 +93,8 @@ void Cjt_usuaris::cjt_inscriure_curs(const int &c, const string &u, Cjt_sesions 
     
     if (it->second.enviable() != 0)
     {
+
+        
         it->second.inscriure_curs(c);
         
         C.inc_inscrits_cjt(c);
@@ -106,28 +108,46 @@ void Cjt_usuaris::enviament(string &user, string &prob, int &r, Cjt_cursos &c, C
     
     map <string,Usuari>::iterator it = mapa.find(user);
     it->second.afegir_intentats(prob);
-    p.inc_env_total_cjt(prob);
+    
     if (r==1) 
     {   
-        int curs = it->second.curs_usuari();
         
-        p.inc_env_exit_cjt(prob);
-       
-        it->second.afegir_resolt(prob);        
-        
-        string ses = c.cjt_curs_sesio_problema(curs, prob);
-        
-        q.troba_fulles_afegeix_cjt(prob, ses, it->second);
-        
-        
-        if (it->second.enviable() == 0)
+        if (not it->second.esta_resolt_prob(prob))
         {
-            it->second.acabar_curs();
-            c.inc_acabaments_cjt(curs);
-            c.dec_inscrits_cjt(curs);
+            it->second.inc_env();
+            int curs = it->second.curs_usuari();
+            p.inc_env_total_cjt(prob);
+            p.inc_env_exit_cjt(prob);
+            
+            it->second.afegir_resolt(prob);        
+        
+            string ses = c.cjt_curs_sesio_problema(curs, prob);
+        
+            q.troba_fulles_afegeix_cjt(prob, ses, it->second);
+        }
+        else 
+        {
+            //p.inc_env_total_cjt(prob);
+            
+        }
+        
+    }
+    else 
+    {
+        if (not it->second.esta_resolt_prob(prob)) 
+        {
+            p.inc_env_total_cjt(prob);
+            it->second.inc_env();
         }
         
     }
     
     
+    
+}
+
+
+void Cjt_usuaris::acabar_curs_cjt(const string &user)
+{
+    mapa[user].acabar_curs();
 }

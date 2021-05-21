@@ -77,6 +77,9 @@ class Usuari{
         */
         void acabar_curs();
 
+        void inc_env();
+
+        bool esta_resolt_prob(const string &p);
         //Consultors
         /** @brief Comprova que l'usuari que hagi completat el curs
         \pre Està inscrit a un curs
